@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": false,
     "postcss": true,
@@ -23,7 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": false,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,8 +40,9 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.16.0",
-  "appid": "wxe18cbe1293b8441e",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "libVersion": "2.19.3",
+  "appid": "wx966e4ea2b6ca1b45",
   "projectname": "%E6%A0%A1%E5%9B%AD%E5%AF%BC%E8%88%AA-github",
   "debugOptions": {
     "hidedInDevtools": []
@@ -52,6 +53,7 @@
     "servePath": ""
   },
   "isGameTourist": false,
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

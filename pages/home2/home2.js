@@ -143,7 +143,7 @@ Page({
               id:i+1,
               latitude: lat,
               longitude: lon,
-              iconPath: "../../image/吃饭icon.png",
+              iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZlKAxYmcXDANpllxlhNQ2ApJJhnURibsPtsuKIeMHvTSYwZ6rHcqscOg/0?wx_fmt=png",
               width: 30,
               height: 30,
               label: {
@@ -402,7 +402,7 @@ nearby_search:function(){
             id:i+1,
             latitude: lat,
             longitude: lon,
-            iconPath: "../../image/标记.png",
+            iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZLKPUMFVZqyt1Bic6YkRgqLSoJk15hxvxFTakjuEk2UnFnCcI7P4zh1w/0?wx_fmt=png",
             width: 25,
             height: 25,
             label: {
@@ -454,7 +454,7 @@ nearby_search:function(){
         break;
       }
     }
-    //初始化起点为西大门门口
+    //初始化起点为北门门口
     var startPoint = JSON.stringify({
       'name': markersda[0].callout.content,
       'latitude': markersda[0].latitude,
@@ -487,12 +487,12 @@ nearby_search:function(){
   // 路径规划
   test:function(){
     let plugin = requirePlugin('routePlan');
-    let key = 'xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx';  //使用在腾讯位置服务申请的key
+    let key = '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU';  //使用在腾讯位置服务申请的key
     let referer = 'cugerguider';   //调用插件的app的名称
     let endPoint = JSON.stringify({  //终点
-        'name': '中国地质大学（武汉）',
-        'latitude': 30.51863,
-        'longitude': 114.401
+        'name': '东莞理工学院（莞城校区）',
+        'latitude': 23.050736,
+        'longitude': 113.77289
     });
     wx.navigateTo({
         url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
@@ -535,7 +535,7 @@ nearby_search:function(){
     wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
         // 实例化API核心类
         qqmapsdk = new QQMapWX({
-          key: 'xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx'
+          key: '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU'
       });
       // wx.showModal({
       //   title:'提示',
@@ -578,7 +578,7 @@ nearby_search:function(){
           console.log(res)
           var nowlatitude = res.latitude
           var nowlongitude = res.longitude
-          if((nowlatitude > 30.454702) && (nowlatitude < 30.459556) && (nowlongitude > 114.610349) && (nowlongitude < 114.622846))
+          if((nowlatitude > 23.046136) && (nowlatitude < 23.055091) && (nowlongitude > 113.76821) && (nowlongitude < 113.776327))
           {
             that.setData({
               markers:[
@@ -614,13 +614,13 @@ nearby_search:function(){
                     markers:[
                       {
                         id:0,
-                        latitude:30.459935,
-                        longitude:114.617916,
+                        latitude:23.050736,
+                        longitude:113.77289,
                         iconPath:"../../image/mapcenter.png",
                         width:25,
                         height:25,
                         callout:{
-                          content:"北大门",
+                          content:"莞城",
                           color:'#0000ff',
                           fontSize:13,
                           borderRadius:5,
@@ -663,17 +663,17 @@ nearby_search:function(){
           }
         }
       });
-      // let mapCtx = wx.createMapContext('myMap',that)
-      // console.log(mapCtx)
-      // mapCtx.initMarkerCluster({
-      //   enableDefaultStyle:true,
-      //   zoomOnClick:true,
-      //   gridSize:60,
-      //   complete(res){
-      //     console.log('initMarkerCluster',res)
-      //   }
-      // })
-  },
+  //     let mapCtx = wx.createMapContext('myMap',that)
+  //     console.log(mapCtx)
+  //     mapCtx.initMarkerCluster({
+  //       enableDefaultStyle:true,
+  //       zoomOnClick:true,
+  //       gridSize:60,
+  //       complete(res){
+  //         console.log('initMarkerCluster',res)
+  //       }
+  //     })
+   },
   onReady: function (e) {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap');
@@ -708,7 +708,7 @@ nearby_search:function(){
     })
     //路径规划
     var plugin = requirePlugin('routePlan');
-    var key = 'xxxxx-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx';  //使用在腾讯位置服务申请的key
+    var key = '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU';  //使用在腾讯位置服务申请的key
     var referer = 'cugerguider';   //调用插件的app的名称
     var themeColor = '#7B68EE';  //主题颜色
     var endPoint = that.data.endPoint;

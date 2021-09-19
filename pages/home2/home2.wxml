@@ -9,37 +9,37 @@
 </view>
 <view class="index_other">
    <view class="other_element" bindtap="tripplace" >
-     <image class="other_element_icon" src="../../image/trip.png"></image>
-     <view class="other_element_text">游在地大</view>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZpUJ9YcEzLLrYibibDd4I8sQmbFmMiaCGJBbM8rtNicETt5t5iaialzZQKjuQ/0?wx_fmt=png"></image>
+     <view class="other_element_text">游览</view>
    </view>
    <view class="other_element" bindtap="studyplace">
-     <image class="other_element_icon" src="../../image/study.png"></image>
-     <view class="other_element_text">学在地大</view>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZB2wgexRkzmqTqaQib7zMd2ElQXOByjSDKhpzlLxJ2AmaptjL3biahiaibQ/0?wx_fmt=png"></image>
+     <view class="other_element_text">学习</view>
    </view>
    <view class="other_element" bindtap="eatplace">
-     <image class="other_element_icon" src="../../image/eat.png"></image>
-     <view class="other_element_text">吃在地大</view>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZlKAxYmcXDANpllxlhNQ2ApJJhnURibsPtsuKIeMHvTSYwZ6rHcqscOg/0?wx_fmt=png"></image>
+     <view class="other_element_text">吃饭</view>
    </view>
    <view class="other_element" bindtap="runplace">
-     <image class="other_element_icon" src="../../image/running.png"></image>
-     <view class="other_element_text">运动地大</view>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZ2XkaE48aiblic60QsFHicBog4XrD11EEEVPdVyiasmjphKTuu3fF2lHreg/0?wx_fmt=png"></image>
+     <view class="other_element_text">运动</view>
    </view>
  </view>
   <view class="index_other">
    <view class="other_element" bindtap="tranplace">
-     <image class="other_element_icon" src="../../image/transform.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZScWR9UmHyj4NcFshgYSibPyHicibDOTxaRefq7GdKdNYpXuiciceGHZ6zVg/0?wx_fmt=png"></image>
      <view class="other_element_text">交通服务</view>
    </view>
    <view class="other_element" bindtap="lifeplace">
-     <image class="other_element_icon" src="../../image/life.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZ76nCbz9sfONmEicpMWibHEibUvibJFjK7haorvJ02zUZqUP57ribFQCYhJA/0?wx_fmt=png"></image>
      <view class="other_element_text">生活服务</view>
    </view>
    <view class="other_element" bindtap="adminplace">
-     <image class="other_element_icon" src="../../image/administrative.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZroiay58RPDYCWcxfEAibSB7qr5E1xy1GsK8rpxGxYFR0RHY1j9icBP71g/0?wx_fmt=png"></image>
      <view class="other_element_text">行政大楼</view>
    </view>
    <view class="other_element" bindtap="dorplace">
-     <image class="other_element_icon" src="../../image/dormitory.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZQfiaMVr5JDd8uXFTIU5d435a2Muy5rNMkexz8MZ2vwOfFGAicxLD8Zag/0?wx_fmt=png"></image>
      <view class="other_element_text">学生宿舍</view>
    </view>
  </view>
@@ -54,15 +54,13 @@ enable-rotate="true"
 enable-building="true"
 bindmarkertap="onPointTap"
 bindlabeltap="onPointTap"
-subkey="LM6BZ-WVQKQ-BFH5Z-GJLKI-4YHNK-NAFM5"
-layer-style="2"
 latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"
 ></map>
 
 <!--弹出框-->
 <modal class="model" hidden="{{hidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalconfirm" bindcancel="modalcancel" title="前往此处" style="width:80%">
   <view class="model-img">
-    <image style="width:565rpx;height:300rpx" src="https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRqEceyJTIetvRDXXfK5AsGulNDrG2TW1rDybw5ibOOIypHQDgY5vlpSENo9HBpibGWmr6sNEicgtiaXyw/0?wx_fmt=png"></image>
+    <image style="width:565rpx;height:300rpx" src="https://img1.027art.cn/img/2020/03/1583870337801574.jpg"></image>
   </view>
   <view class="model-name">{{modalname}}</view>
   <view class="model-name">{{modaladdress}}</view>

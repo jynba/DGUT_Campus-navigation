@@ -1,6 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "未来城导航系统",
+  "navigationBarTitleText": "莞城地图",
   "enablePullDownRefresh": true ,
   "backgroundTextStyle": "dark" 
 }

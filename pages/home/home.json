@@ -1,7 +1,7 @@
 {
   "usingComponents": {
   },
-  "navigationBarTitleText": "南望山导航系统",
+  "navigationBarTitleText": "松山湖地图",
   "enablePullDownRefresh": true ,
   "backgroundTextStyle": "dark" 
 }

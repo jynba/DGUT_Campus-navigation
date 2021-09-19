@@ -169,7 +169,16 @@ button {
   width: 80rpx;
   height: 80rpx;
 }
-
+#wrap{
+  width: 100vw;
+  height: calc(100vh - 1px);
+}
+#wrap #content{
+  padding: 0 65rpx;
+  padding-top: 80rpx;
+  padding-bottom: 60px;
+  background: linear-gradient(rgba(46,49,146,.15) 0%,rgba(249,249,255,.01) 80%,rgba(0,0,0,0) 100%);
+}
 .full {
   top: 82%;
 }

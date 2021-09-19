@@ -1,0 +1,10 @@
+<!--pages/mode/mode.wxml-->
+<form bindsubmit="onSubmit">
+<button class='btn' id='btn' bindtap="getmyPlace">获取自己当前坐标经纬度</button>
+<input class='text' placeholder='输入经度~' name='lat' value="{{value1}}"></input>
+<input class='text' placeholder='输入纬度~' name='lon' value="{{value2}}"></input>
+<input class='text' placeholder='输入地点名称' name='name' value="{{value3}}"></input>
+<button class='btn' form-type="submit">上传并生成maker</button>
+</form>
+<button bindtap="showmap">显示当前makers</button>
+<button bindtap="deletefunction">清除所有自定义makers</button>

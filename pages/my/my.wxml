@@ -1,0 +1,16 @@
+<!--pages/my/my.wxml-->
+<!-- 当已经授权的时候 -->
+<view wx:if="{{result == 'ok'}}">
+  <view class="headView">
+    <image class="icon" src="{{avatarUrl}}"></image>
+  </view>
+  <view class="nickname headView">{{userInfo}}</view>
+  <view class="item" data-target="setting" bindtap="navTo">
+  <text>   管理员模式</text>
+</view>
+</view>
+<!-- 当未授权的时候 -->
+<view wx:else class="headView">
+<view>未授权,授权后可进入管理员模式</view>
+<button wx:if="{{canIUse}}" open-type="getUserInfo"  bindtap="getUserProfile">授权登录</button>
+</view>

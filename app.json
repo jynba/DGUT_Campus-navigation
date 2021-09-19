@@ -1,8 +1,7 @@
 {
   "pages": [
-    
     "pages/home/home",
-    "pages/tour/tour",
+    "pages/mode/mode",
     "pages/home2/home2",
     "pages/baike/baike",
     "pages/xingqiu/xingqiu",
@@ -25,7 +24,7 @@
   },
   "plugins": {
     "routePlan": {
-      "version": "1.0.12",
+      "version": "1.0.13",
       "provider": "wx50b5593e81dd937a"
     },
     "subway": {
@@ -33,7 +32,7 @@
       "provider": "wx6aaf93c4435fa1c1"
       },
       "chooseLocation": {
-        "version": "1.0.5",
+        "version": "1.0.6",
         "provider": "wx76a9a06e5b4e693e"
         }
   },
@@ -47,18 +46,18 @@
         "selectedIconPath": "/image/baike_1.png",
         "iconPath": "/image/baike.png",
         "pagePath": "pages/home/home",
-        "text": "南望山"
+        "text": "莞工松山湖"
       },
       {
         "selectedIconPath": "/image/zhubao_1.png",
         "iconPath": "/image/zhubao.png",
         "pagePath": "pages/home2/home2",
-        "text": "未来城"
+        "text": "莞工莞城"
       },
       {
         "selectedIconPath": "/image/gouwu_1.png",
         "iconPath": "/image/gouwu.png",
-        "pagePath": "pages/xingqiu/xingqiu",
+        "pagePath": "pages/communicate/communicate",
         "text": "星球"
       },
       {
