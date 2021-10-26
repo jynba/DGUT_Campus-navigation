@@ -43,8 +43,9 @@ Page({
     modalname: null,
     modaltitle: null,
     modaladdress: null,
+    hasshow:false,
   },
-  //点击按钮现实地图上对应的点
+  //点击按钮实现地图上对应的点
   tripplace: function () {
     var that = this;
     var result = that.data.tripdata;
@@ -618,7 +619,7 @@ Page({
               }
             }]
           })
-        } else {
+        } else if(!that.data.hasshow){
           wx.showModal({
             title: '提示',
             content: '当前位置不在校区内，是否切换？',
@@ -668,7 +669,7 @@ Page({
               }
             }
           })
-
+          that.data.hasshow = true;
         }
       }
     });

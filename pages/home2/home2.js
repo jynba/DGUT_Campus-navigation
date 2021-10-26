@@ -20,7 +20,7 @@ Page({
     hidden:true,
     // 设置markers
     markers:[],
-    // 设置地大的数据
+    // 设置数据
     tripdata:[],
     studydata: [],
     eatdata:[],
