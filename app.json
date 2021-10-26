@@ -22,7 +22,7 @@
   },
   "plugins": {
     "routePlan": {
-      "version": "1.0.13",
+      "version": "1.0.14",
       "provider": "wx50b5593e81dd937a"
     },
     "subway": {
