@@ -3,10 +3,8 @@
     "pages/home/home",
     "pages/mode/mode",
     "pages/home2/home2",
-    "pages/baike/baike",
     "pages/xingqiu/xingqiu",
     "pages/communicate/communicate",
-    "pages/iBeiKe/iBeiKe",
     "pages/my/my"
   ],
   "window": {
@@ -58,7 +56,7 @@
         "selectedIconPath": "/image/gouwu_1.png",
         "iconPath": "/image/gouwu.png",
         "pagePath": "pages/communicate/communicate",
-        "text": "星球"
+        "text": "留言"
       },
       {
         "selectedIconPath": "/image/wode_1.png",
