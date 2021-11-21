@@ -1,0 +1,25 @@
+<!--pages/my/my.wxml-->
+<view class='background' style='height:200px'>
+  <open-data type="userNickName" class="username"></open-data>
+  <view class='title_icon' bindtap="myCenterPage">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class='title_text'>个人</view>
+</view>
+
+<view class="top">
+  <view class="item" data-target="setting" bindtap="navTo1">
+    <text class="text"> 管理员模式</text>
+  </view>
+  <view class="item" data-target="setting" bindtap="navTo">
+    <text class="text">更换主题颜色</text>
+  </view>
+  <view class="item" data-target="setting" bindtap="navTo2">
+    <text class="text">帮助中心</text>
+  </view>
+  <view class="item" data-target="setting" bindtap="navTo3">
+    <text class="text">关于我们</text>
+  </view>
+  <button open-type='share'>分享给好友</button>
+  <button open-type="contact" bindcontact="handleContact">客服消息</button>
+</view>

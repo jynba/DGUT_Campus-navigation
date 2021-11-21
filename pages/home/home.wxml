@@ -1,0 +1,79 @@
+<view class='background' style='height:70px'>
+  <view >
+    <image src="/image/dgut.png" class='picture' ></image>
+  </view>
+  <view class="title"><text>DGUT</text></view>
+</view>
+<view class='framework'>
+   <view class='input-position'>
+      <image src='https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRribpVmzlUNGvYVU4jojoICBY1u3ic8lBGbs3sC86DgZy2wwicU5yMtUiagyicNcibu2mP8ibaVyBEysUy5A/0?wx_fmt=png' class='search-image'></image>
+       <input class="input" placeholder="搜索 周边 地址" placeholder-style="color:#bdbdbd;" bindinput="inputplace" />
+       <view class='line'></view>
+       <view class='search-text' bindtap="nearby_search">搜索</view>
+   </view>
+</view>
+
+<view class="index_other">
+   <view class="other_element" bindtap="studyplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZB2wgexRkzmqTqaQib7zMd2ElQXOByjSDKhpzlLxJ2AmaptjL3biahiaibQ/0?wx_fmt=png"></image>
+     <view class="other_element_text">学习</view>
+   </view>
+   <view class="other_element" bindtap="eatplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZlKAxYmcXDANpllxlhNQ2ApJJhnURibsPtsuKIeMHvTSYwZ6rHcqscOg/0?wx_fmt=png"></image>
+     <view class="other_element_text">吃饭</view>
+   </view>
+   <view class="other_element" bindtap="runplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZ2XkaE48aiblic60QsFHicBog4XrD11EEEVPdVyiasmjphKTuu3fF2lHreg/0?wx_fmt=png"></image>
+     <view class="other_element_text">运动</view>
+   </view>
+   <view class="other_element" bindtap="tripplace" >
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZpUJ9YcEzLLrYibibDd4I8sQmbFmMiaCGJBbM8rtNicETt5t5iaialzZQKjuQ/0?wx_fmt=png"></image>
+     <view class="other_element_text">私人定制</view>
+   </view>
+ </view>
+  <view class="index_other">
+    <view class="other_element" bindtap="dorplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZQfiaMVr5JDd8uXFTIU5d435a2Muy5rNMkexz8MZ2vwOfFGAicxLD8Zag/0?wx_fmt=png"></image>
+     <view class="other_element_text">学生宿舍</view>
+   </view>
+   <view class="other_element" bindtap="tranplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZScWR9UmHyj4NcFshgYSibPyHicibDOTxaRefq7GdKdNYpXuiciceGHZ6zVg/0?wx_fmt=png"></image>
+     <view class="other_element_text">交通服务</view>
+   </view>
+   <view class="other_element" bindtap="lifeplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZ76nCbz9sfONmEicpMWibHEibUvibJFjK7haorvJ02zUZqUP57ribFQCYhJA/0?wx_fmt=png"></image>
+     <view class="other_element_text">生活服务</view>
+   </view>
+   <view class="other_element" bindtap="adminplace">
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZroiay58RPDYCWcxfEAibSB7qr5E1xy1GsK8rpxGxYFR0RHY1j9icBP71g/0?wx_fmt=png"></image>
+     <view class="other_element_text">行政大楼</view>
+   </view>
+ </view>
+ 
+<map 
+id="myMap"
+style="width:100%;height:1000rpx"
+markers="{{markers}}"
+data-markers="{{markers}}"
+scale="16"
+show-compass="true"
+enable-rotate="true"
+enable-building="true"
+bindmarkertap="onPointTap"
+bindlabeltap="onPointTap"
+latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"
+></map>
+
+<!--弹出框-->
+<modal class="model" hidden="{{hidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalconfirm" bindcancel="modalcancel" title="前往此处" style="width:80%">
+  <view class="model-img">
+    <image style="width:565rpx;height:300rpx" src="https://img1.027art.cn/img/2020/03/1583870337801574.jpg"></image>
+  </view>
+  <view class="model-name">{{modalname}}</view>
+  <block wx:if="{{modaladdress}}">
+    <view  class="model-name">{{modaladdress}}</view>
+  </block>
+</modal>
+<!--弹出框结束-->
+
+

@@ -1,0 +1,58 @@
+/* pages/mode/mode.wxss */
+.background {
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: #8dc4e9;
+}
+.title_text {
+  width: 100%;
+  top: 1em;
+  color: white;
+  line-height: 45px;
+  text-align: center;
+  position: absolute;
+  font-size: 34rpx;
+}
+
+.bottomBtn{
+  position: absolute;
+  left: 65rpx;
+  bottom: 15%;
+  width: calc(100% - 130rpx);
+}
+.form_pos{
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  text-align: center;
+  color: rgb(44, 40, 40);
+  background: rgba(245,245,255,.3);
+  border: 2rpx solid rgba(205,205,215,.5);
+  box-sizing: border-box;
+}
+.bottomBtn > view{
+  width: 100%;
+  height: 75rpx;
+  line-height: 75rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  letter-spacing: 10rpx;
+  text-indent: 10rpx;
+  text-align: center;
+  color: #666;
+  border-radius: 20rpx;
+  background: rgba(245,245,255,.3);
+  border: 2rpx solid rgba(205,205,215,.5);
+  box-sizing: border-box;
+}
+.bottomBtn > view.hover{
+  transform: scale(.9);
+}
+.bottomBtn > view:not(:last-of-type){
+  margin-bottom: 25rpx;
+}

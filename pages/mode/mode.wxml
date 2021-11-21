@@ -1,0 +1,17 @@
+<!--pages/mode/mode.wxml-->
+<view class='background' style='height:50px'>
+  <view class='title_text'>管理markers</view>
+</view>
+
+<form bindsubmit="onSubmit" class="form_pos">
+  <button class='btn' id='btn' bindtap="getmyPlace">获取自己当前坐标经纬度</button>
+  <input class='text' placeholder='输入经度~' name='lat' value="{{value1}}"></input>
+  <input class='text' placeholder='输入纬度~' name='lon' value="{{value2}}"></input>
+  <input class='text' placeholder='输入地点名称' name='name' value="{{value3}}"></input>
+  <button class='btn' form-type="submit">上传并生成maker</button>
+</form>
+<view class="bottomBtn">
+<view class="back" bindtap="showmap" hover-class="hover">显示当前makers</view>
+<view class="back" bindtap="deletefunction" hover-class="hover">清除所有自定义makers</view>
+<view class="back" bindtap="pageBack" hover-class="hover">返回</view>
+</view>

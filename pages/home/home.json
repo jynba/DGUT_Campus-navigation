@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+  },
+  "navigationBarTitleText": "松山湖地图",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark" 
+}
