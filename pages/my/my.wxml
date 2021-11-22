@@ -17,7 +17,7 @@
   <view class="item" data-target="setting" bindtap="navTo2">
     <text class="text">帮助中心</text>
   </view>
-  <view class="item" data-target="setting" bindtap="navTo3">
+  <view class="item" data-target="setting" bindtap="clickImg">
     <text class="text">关于我们</text>
   </view>
   <button open-type='share'>分享给好友</button>

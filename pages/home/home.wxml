@@ -6,7 +6,7 @@
 </view>
 <view class='framework'>
    <view class='input-position'>
-      <image src='/image/搜索.png' class='search-image'></image>
+      <image src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDBtpulCvlfej9twl7B3U2M9p1GLUtnTgMicbQHSOMGcN2V5DXe8GggNg/0?wx_fmt=png" class='search-image'></image>
        <input class="input" placeholder="搜索 周边 地址" placeholder-style="color:#bdbdbd;" bindinput="inputplace" />
        <view class='line'></view>
        <view class='search-text' bindtap="nearby_search">搜索</view>
@@ -15,47 +15,51 @@
 
 <view class="index_other">
    <view class="other_element" bindtap="studyplace">
-     <image class="other_element_icon" src="/image/学习2.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDXqWdr7StxLibxGltW0EBv8iayOekiciaaiaNxgxYfScp3oPazU3FDR0mZuw/0?wx_fmt=png"></image>
      <view class="other_element_text">学习</view>
    </view>
    <view class="other_element" bindtap="eatplace">
-     <image class="other_element_icon" src="/image/吃饭.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDxmDIdGd26wCFBOD46COqxYMrrqL6lzfPPkAxlVXlNKENd5huViau4KQ/0?wx_fmt=png"></image>
      <view class="other_element_text">吃饭</view>
    </view>
    <view class="other_element" bindtap="runplace">
-     <image class="other_element_icon" src="/image/运动.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDF8R9aKVvUV9aEo2MufnxC7yp5vbpVjO0VW0swtJIrVtSDjibMJZa8bw/0?wx_fmt=png"></image>
      <view class="other_element_text">运动</view>
    </view>
    <view class="other_element" bindtap="tripplace" >
-     <image class="other_element_icon" src="/image/个性化.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png"></image>
      <view class="other_element_text">私人定制</view>
    </view>
  </view>
   <view class="index_other">
     <view class="other_element" bindtap="dorplace">
-     <image class="other_element_icon" src="/image/宿舍.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDQd1KckKKaG7kElWTzWXokhgmNxUUq08KWyY3bN05gaa0kG6iaHLf10w/0?wx_fmt=png"></image>
      <view class="other_element_text">学生宿舍</view>
    </view>
    <view class="other_element" bindtap="tranplace">
-     <image class="other_element_icon" src="/image/交通灯.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDqaxto5DOZCMcxcFXibfibqtK5kFMibSJ0Ej01TXsapjGXdBlCdWMdHA1Q/0?wx_fmt=png"></image>
      <view class="other_element_text">交通服务</view>
    </view>
    <view class="other_element" bindtap="lifeplace">
-     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZ76nCbz9sfONmEicpMWibHEibUvibJFjK7haorvJ02zUZqUP57ribFQCYhJA/0?wx_fmt=png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDCqzc3shOx2g4Yg7j3icnicaAo0eBT6Qia8hFtYv3ztbnRqXePcFCvH61A/0?wx_fmt=png"></image>
      <view class="other_element_text">生活服务</view>
    </view>
    <view class="other_element" bindtap="adminplace">
-     <image class="other_element_icon" src="/image/行政大楼.png"></image>
+     <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDicWe9ic1CzllgoWz5ja9bEEFOYWle88p1sJ1oAFx4hTSaN3z9ywOdiccA/0?wx_fmt=png"></image>
      <view class="other_element_text">行政大楼</view>
    </view>
  </view>
- 
-<map 
+
+ <view class="top-swich">
+ <view class="top-swich-btn" bindtap="close">收起</view>
+ </view>
+<view class="maptype">
+  <map 
 id="myMap"
 style="width:100%;height:1000rpx"
 markers="{{markers}}"
 data-markers="{{markers}}"
-scale="16"
+scale="18"
 show-compass="true"
 enable-rotate="true"
 enable-building="true"
@@ -63,6 +67,8 @@ bindmarkertap="onPointTap"
 bindlabeltap="onPointTap"
 latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"
 ></map>
+</view>
+
 
 <!--弹出框-->
 <modal class="model" hidden="{{hidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalconfirm" bindcancel="modalcancel" title="前往此处" style="width:80%">

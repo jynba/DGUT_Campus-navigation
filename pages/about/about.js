@@ -5,9 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    Imglist:[
+      "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDBtpulCvlfej9twl7B3U2M9p1GLUtnTgMicbQHSOMGcN2V5DXe8GggNg/0?wx_fmt=png",
+      "/image/yy.jpg"
+    ],
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

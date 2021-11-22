@@ -1,12 +1,22 @@
 var app = getApp();
 Page({
   data: {
-    id: ""
+    id: "",
+    Imglist:[
+      "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDgQdvrIsHTaVD414IBPFPibDX6PG3lqYo4p097wp6dLLEnStQT1S5SdA/0?wx_fmt=png",
+      "https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDuzCGPHQSqlRibUYeicNYDLB4lPVwnuL2HJz2nyoJqicd4y19IByFGl8Ww/0?wx_fmt=jpeg"
+    ],
   },
-  handleContact(e) {
-    console.log(e.detail.path)
-    console.log(e.detail.query)
+  clickImg: function(e){
+    wx.previewImage({
+      urls: this.data.Imglist,
+    })
   },
+  // handleContact(e) {
+  //   console.log(e.detail.path)
+  //   console.log(e.detail.query)
+  // },
+
   onLoad: function () {},
 
   onShareAppMessage: function (res) {

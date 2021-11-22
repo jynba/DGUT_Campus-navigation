@@ -1,1 +1,50 @@
-/* pages/campus/campus.wxss */
+.background {
+  width: 100%;
+  position: relative;
+  z-index: 999;
+  background: #689bda;
+  display: flex;
+  flex-flow: row;
+}
+.background .title{
+  font-style: normal;
+  color: #fff;
+  padding-top: 85rpx;
+  font-size: 45rpx;
+  font-weight: bold;
+}
+.background .picture{
+  height: 60rpx;
+  width: 60rpx;
+  padding-top: 85rpx;
+  padding-left: 10rpx;
+}
+
+
+.text {
+  font-weight: bold;
+  width: 100%;
+  top: 1em;
+  color:rgb(12, 11, 11);
+  line-height: 45px;
+  font-size: 70rpx;
+}
+
+
+.swiper {
+  margin-top: 30rpx;
+  height: 400rpx;
+  width: 100%;
+}
+.slide-image{
+  height: 400rpx;
+  width: 80%;
+  border-radius: 20rpx;
+}
+.center {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

@@ -1,2 +1,21 @@
-<!--pages/campus/campus.wxml-->
-<text>pages/campus/campus.wxml</text>
+<view class='background' style='height:70px'>
+  <view>
+    <image src="/image/dgut.png" class='picture'></image>
+  </view>
+  <view class="title"><text>DGUT</text></view>
+</view>
+
+<view>
+  <text class="text">校园风光</text>
+</view>
+<view class="center">
+  <swiper class="swiper" autoplay="true"indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
+  <block wx:for="{{lunbo}}" wx:for-index="index">
+    <swiper-item>
+      <view class="center">
+        <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+</view>

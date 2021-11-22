@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/campus/campus",
     "pages/home/home",
     "pages/my/my",
     "pages/mode/mode",
     "pages/about/about",
-    "pages/help/help",
-    "pages/campus/campus"
+    "pages/help/help"
   ],
   "window": {
     "backgroundTextStyle": "light",
