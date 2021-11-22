@@ -40,20 +40,20 @@
     "position": "bottom",
     "list": [
       {
-        "selectedIconPath": "/image/baike_1.png",
-        "iconPath": "/image/baike.png",
+        "selectedIconPath": "/image/松山湖地图选中.png",
+        "iconPath": "/image/松山湖地图.png",
         "pagePath": "pages/home/home",
         "text": "松山湖地图"
       },
       {
-        "selectedIconPath": "/image/gouwu_1.png",
-        "iconPath": "/image/gouwu.png",
+        "selectedIconPath": "/image/校园风光选中.png",
+        "iconPath": "/image/校园风光.png",
         "pagePath": "pages/campus/campus",
         "text": "校园风光"
       },
       {
-        "selectedIconPath": "/image/wode_1.png",
-        "iconPath": "/image/wode.png",
+        "selectedIconPath": "/image/我的选中.png",
+        "iconPath": "/image/我的.png",
         "pagePath": "pages/my/my",
         "text": "我的"
       }
