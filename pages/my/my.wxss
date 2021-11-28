@@ -7,10 +7,30 @@
   border-bottom-right-radius: 20rpx;
   border-bottom-left-radius: 20rpx;
   background: #77aeec;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
 }
+
 /*
 #6BC5D2 #A5E9DB 769FCD F2A379 #90A4Ae
 */
+.top {
+  margin-left: 1em;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
 .title_text {
   width: 100%;
   top: 1em;
@@ -21,10 +41,18 @@
   font-size: 34rpx;
 }
 
+.username {
+  position: relative;
+  top: 40%;
+  left: 80rpx;
+  font-size: 70rpx;
+  color: white;
+}
+
 .title_icon {
-  position: absolute;
-  top: 30%;
-  right: 8%;
+  position: relative;
+  top: 40%;
+  right: 40rpx;
   overflow: hidden;
   border-radius: 50%;
   display: flex;
@@ -38,48 +66,158 @@
   0% {
     box-shadow: 0 0 10px #fff
   }
+
   25% {
     box-shadow: 0 0 20px #fff
   }
+
   50% {
     box-shadow: 0 0 30px #fff
   }
+
   75% {
     box-shadow: 0 0 20px #fff
   }
+
   100% {
     box-shadow: 0 0 20px #fff
   }
 }
 
-.username {
-  position: absolute;
-  top: 30%;
-  left: 1em;
-  font-size: 70rpx;
-  color: white;
-}
-.user {
-  width: 100%;
-  height: 430rpx;
-  padding-top: 40rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 
-.user .usericon {
-  height: 150rpx;
-  width: 150rpx;
-  border: 5rpx solid #515151;
-  border-radius: 50%;
-}
-.text{
-  width: 100%;
+.text1 {
   color: black;
-  line-height: 45px;
+  line-height: 100rpx;
   text-align: center;
   position: relative;
   font-size: 34rpx;
+}
+
+.text1::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQiadeib3e6MFq7NuibXicsOibQnzjDWD3ibXlyaeKQaeoR6IncYDMJoEGB0zA/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+.text2 {
+  color: black;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.text2::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQFdHElHd3VpiaQHJPO8xuMp9JqR7rWvOPs7nSPfKNBsg7hyzZgyF06Og/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+.text3 {
+  color: black;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.text3::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUD9DQv4Via6jXjPEKQIRhFej7k4dRAqIf1rgofkdQKlE65N59M3CTkvVw/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+.text4 {
+  color: black;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.text4::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDymiaictKibJ5yN5usRvABOP969Iqve6Ldn46pkP6pEckoUzQUpKPDGLyg/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+
+.text5 {
+  color: #666;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.text5::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDDbcnfbPibTlYibib3ocOmweibakCwIs2eezpAFxMAf2QNK9YRv9ON4YJdQ/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30px;
+  height: 30px;
+}
+.text6 {
+  color: #666;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.text6::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDhicoKQn6ECLLSkZ36yyEgib8NicibXLakdptGjpLe1gJFxT0khnLpicvd3A/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 0px;
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  background-color:white;
+  width: fit-content;
+  padding: 0rpx;
 }

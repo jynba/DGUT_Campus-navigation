@@ -10,9 +10,9 @@ Page({
   data: {
     value1: "",
     value2: "",
-    value3: "",
     id:"",
-    task:{}
+    task:{},
+    image: null
   },
   pageBack(){
     wx.navigateBack();
@@ -20,6 +20,29 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  selectImage:function(e){
+    wx.chooseImage({
+      count : 1,
+      sizeType :['compressed'],
+      sourceType:['album','camera'],
+      success:res=>{
+        console.log(res.tempFilePaths[0])
+        wx.cloud.uploadFile({
+          cloudPath:`${Math.floor(Math.random()*1000000)}.jpg`,
+          //~使得每次上传的图片名字不一样
+          filePath: res.tempFilePaths[0],
+        }).then(res=>{
+          console.log(res.fileID)
+          this.setData({
+            image:res.fileID
+          })
+        }).catch(err=>{
+          console.log(err)
+        })
+      },
+    })
+  },
+  
   onLoad: function (options) {
 
   },
@@ -53,7 +76,9 @@ Page({
       data:{
         latitude:that.data.value1,
         longitude:that.data.value2,
-        name:e.detail.value.name
+        name:e.detail.value.name,
+        image:that.data.image,
+        address:e.detail.value.address
       }
     }).then(res=>{
       that.data.id=res._id;

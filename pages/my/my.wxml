@@ -4,22 +4,27 @@
   <view class='title_icon' bindtap="myCenterPage">
     <open-data type="userAvatarUrl"></open-data>
   </view>
-  <view class='title_text'>个人</view>
+  <view class='title_text'>我</view>
 </view>
 
 <view class="top">
   <view class="item" data-target="setting" bindtap="navTo1">
-    <text class="text"> 管理员模式</text>
+    <text class="text1"> 管理员模式</text>
   </view>
   <view class="item" data-target="setting" bindtap="navTo">
-    <text class="text">更换主题颜色</text>
+    <text class="text2">更换主题颜色</text>
   </view>
   <view class="item" data-target="setting" bindtap="navTo2">
-    <text class="text">帮助中心</text>
+    <text class="text3">帮助中心</text>
   </view>
   <view class="item" data-target="setting" bindtap="clickImg">
-    <text class="text">关于我们</text>
+    <text class="text4">关于我们</text>
   </view>
-  <button open-type='share'>分享给好友</button>
-  <button open-type="contact" bindcontact="handleContact">客服消息</button>
 </view>
+
+<button open-type="share">
+    <text class="text5">转发给好友</text>
+  </button>
+  <button open-type="contact" bindcontact="handleContact">
+    <text class="text6">客服消息</text>
+  </button>

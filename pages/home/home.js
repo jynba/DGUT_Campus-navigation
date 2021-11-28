@@ -6,25 +6,16 @@ const db = wx.cloud.database();
 const mylocation = db.collection('location');
 // pages/home/home.js
 Page({
-  /**
-   * 页面的初始数据
-   */
-  //设置下拉刷新
-  onPullDownRefresh: function () {
-    var that = this;
-    that.setData({
-      currentTab: 0 //当前页的一些初始数据，视业务需求而定
-    })
-    this.onLoad(); //重新加载onLoad()
-  },
+
   data: {
+    showUp:false,
     task: {},
     buildData: app.globalData.map,
     hidden: true,
     // 设置markers
     markers: [],
     // 设置莞工的数据
-    tripdata: [],
+    diydata: [],
     studydata: [],
     eatdata: [],
     rundata: [],
@@ -39,16 +30,30 @@ Page({
     endPoint: null,
     //获取当前分类
     currentdatabase: null,
-    modalimg: null,
+    modalimg: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
     modalname: null,
-    modaltitle: null,
     modaladdress: null,
     hasshow:false,
   },
-  //点击按钮实现地图上对应的点
-  tripplace: function () {
+  
+  changeUpDown:function(e){
+    this.setData({
+      showUp:!this.data.showUp
+    })
+  },
+  
+  //设置下拉刷新
+  onPullDownRefresh: function () {
     var that = this;
-    var result = that.data.tripdata;
+    that.setData({
+      currentTab: 0 //当前页的一些初始数据，视业务需求而定
+    })
+    this.onLoad(); //重新加载onLoad()
+  },
+  //点击按钮实现地图上对应的点
+  diyplace: function () {
+    var that = this;
+    var result = that.data.diydata;
     // console.log(result);
     var number = that.data.markers.length;
     let markers = that.data.markers
@@ -67,7 +72,7 @@ Page({
           id: i + 1,
           latitude: lat,
           longitude: lon,
-          iconPath: "../../image/旅游icon.png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -150,7 +155,7 @@ Page({
           id: i + 1,
           latitude: lat,
           longitude: lon,
-          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspzHSgfqhNRrfZ2FAic4JMmZlKAxYmcXDANpllxlhNQ2ApJJhnURibsPtsuKIeMHvTSYwZ6rHcqscOg/0?wx_fmt=png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQq8EwwibiaSuCjwvP79iclIRicSQp7N1XBNbbSEHZ7tNpW4a4DqEiaUES1XQ/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -191,7 +196,7 @@ Page({
           id: i + 1,
           latitude: lat,
           longitude: lon,
-          iconPath: "../../image/运动icon.png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQpZbUtS4sQQic9DSVmwJwWfTiclRhcLTEcD4M9haCVIB531Qv057mzsHg/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -232,7 +237,7 @@ Page({
           id: i + 1,
           latitude: lat,
           longitude: lon,
-          iconPath: "../../image/交通icon.png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQ5rp577RZeV7zhNicC9U9v8CANA8lgHdPyQUML3QRicibib81F7J1jDJx0g/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -273,7 +278,7 @@ Page({
           id: i + 1,
           latitude: lat,
           longitude: lon,
-          iconPath: "../../image/生活icon.png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQvrtTOMMOPdYTGwwzZfmST8cic2jfppNxwzavSWW16bXViaXYqYbHstSQ/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -356,7 +361,7 @@ Page({
           latitude: lat,
           longitude: lon,
           joinCluster: true,
-          iconPath: "../../image/公寓icon.png",
+          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQ8cbVziaAj8rYh9dHmMFogXJZH01icOWZGRbw5KJvCFh1t5CQZC3icj6Cw/0?wx_fmt=png",
           width: 30,
           height: 30,
           label: {
@@ -482,6 +487,7 @@ Page({
     var currentdatabase = this.data.currentdatabase;
     //定位所点击的坐标点
     for (var item of markersda) {
+     //遍历判断id匹配当前点击的id，获取信息
       if (item.id === markerId) {
         lat = item.latitude;
         lon = item.longitude;
@@ -500,10 +506,11 @@ Page({
       'latitude': lat,
       'longitude': lon
     });
-    if (currentdatabase[markerId - 1].title != null) {
+
+    if (currentdatabase[markerId - 1].name != null) {
       that.setData({
         hidden: false,
-        modalname: currentdatabase[markerId - 1].title
+        modalname: currentdatabase[markerId - 1].name
       })
     } else {
       that.setData({
@@ -511,8 +518,10 @@ Page({
         modalname: currentdatabase[markerId - 1].name
       })
     }
+    
     that.setData({
       hidden: false,
+      modalimg: currentdatabase[markerId - 1].image,
       modaladdress: currentdatabase[markerId - 1].address,
       startPoint: startPoint,
       endPoint: endPoint
@@ -521,7 +530,7 @@ Page({
   // 路径规划
   // test: function () {
   //   //let plugin = requirePlugin('routePlan');
-  //   let key = '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU'; //使用在腾讯位置服务申请的key
+  //   let key = ''; //使用在腾讯位置服务申请的key
   //   let referer = 'cugerguider'; //调用插件的app的名称
   //   let endPoint = JSON.stringify({ //终点
   //     'name': '东莞理工学院（松山湖）',
@@ -571,10 +580,11 @@ Page({
     });
     var that = this;
     mylocation.get().then(res => {
-      that.data.tripdata = res.data
+      that.data.diydata = res.data
       //拿到res=option.id后用setData渲染到界面
     })
-    // console.log(that.data.tripdata);
+
+    // console.log(that.data.diydata);
     var study = that.data.buildData[1].data;
     var eat = that.data.buildData[2].data;
     var run = that.data.buildData[3].data;
@@ -619,7 +629,7 @@ Page({
               }
             }]
           })
-        } else if(!that.data.hasshow){
+        } else if(!that.data.hasshow){  //若不在校区，则设置默认地点为北门
           wx.showModal({
             title: '提示',
             content: '当前位置不在校区内，是否切换？',
@@ -673,16 +683,6 @@ Page({
         }
       }
     });
-    // let mapCtx = wx.createMapContext('myMap',that)  //聚合markers
-    // console.log(mapCtx)
-    // mapCtx.initMarkerCluster({
-    //   enableDefaultStyle:true,
-    //   zoomOnClick:true,
-    //   gridSize:60,
-    //   complete(res){
-    //     console.log('initMarkerCluster',res)
-    //   }
-    // })
   },
   onShow: function () {
     this.onLoad();//会触发两次
@@ -705,6 +705,7 @@ Page({
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('myMap',this);
   },
+
   // 设置点聚合
   // initMarkerCluster: function () {
   //   this.mapCtx.initMarkerCluster({
@@ -716,6 +717,7 @@ Page({
   //     }
   //   })
   // },
+
   clickButton: function (e) {
     console.log(this.data.fullscreen)
     //打印所有关于点击对象的信息
@@ -740,7 +742,7 @@ Page({
       }
     })
   },
-  //添加
+
   showCurPos(){
     if(!this.mapCtx) return;
     // 地图移动回当前位置
@@ -755,7 +757,6 @@ Page({
       }
     });
   },
-  //添加
   showPoint(){
     if(!this.mapCtx) return;
     //包含所有坐标点
@@ -767,7 +768,7 @@ Page({
       })
     }
     this.mapCtx.includePoints({
-      padding: [50],
+      padding: [100],
       points: includePointsData
     })
   },
@@ -783,8 +784,8 @@ Page({
     })
     //路径规划
     //var plugin = requirePlugin('routePlan');
-    var key = '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU'; //使用在腾讯位置服务申请的key
-    var referer = 'jy的温馨小窝'; //调用插件的app的名称
+    var key = 'CFUBZ-WXKLW-3PKRK-O6JJY-KMAY5-EJB5L'; //使用在腾讯位置服务申请的key
+    var referer = '莞工地图'; //调用插件的app的名称
     //var themeColor = '#7B68EE'; //主题颜色
     var endPoint = that.data.endPoint;
     var startPoint = that.data.startPoint;

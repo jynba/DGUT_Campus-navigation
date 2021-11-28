@@ -24,25 +24,24 @@ App({
       }
     })
   },
-  getUserInfo: function (cb) {
-    var that = this
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口
-      wx.getUserInfo({
-        withCredentials: false,
-        success: function (res) {
-          that.globalData.userInfo = res.userInfo
-          typeof cb == "function" && cb(that.globalData.userInfo)
-        }
-      })
-    }
-  },
+  // getUserInfo: function (cb) {
+  //   var that = this
+  //   if (this.globalData.userInfo) {
+  //     typeof cb == "function" && cb(this.globalData.userInfo)
+  //   } else {
+  //     //调用登录接口
+  //     wx.getUserInfo({
+  //       withCredentials: false,
+  //       success: function (res) {
+  //         that.globalData.userInfo = res.userInfo
+  //         typeof cb == "function" && cb(that.globalData.userInfo)
+  //       }
+  //     })
+  //   }
+  // },
   globalData: {
-    userInfo: "",
-    avatarUrl: '',
-    map: [{
+    map: [
+      {
         "name": "私人定制",
         "scale": 16,
         "data": []
@@ -286,47 +285,6 @@ App({
           
         ]
       }
-    ],
-    map2: [{
-        "name": "游览",
-        "scale": 16,
-        "data": []
-      },
-      {
-        "name": "学习",
-        "scale": 16,
-        "data": []
-      },
-      {
-        "name": "吃饭",
-        "scale": 16,
-        "data": []
-      },
-      {
-        "scale": 16,
-        "name": "运动",
-        "data": []
-      },
-      {
-        "scale": 16,
-        "name": "交通服务",
-        "data": []
-      },
-      {
-        "name": "生活服务",
-        "scale": 16,
-        "data": []
-      },
-      {
-        "scale": 16,
-        "name": "行政大楼",
-        "data": []
-      },
-      {
-        "scale": 16,
-        "name": "学生宿舍",
-        "data": []
-      }
-    ],
+    ]
   }
 })

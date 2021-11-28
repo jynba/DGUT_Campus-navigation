@@ -21,12 +21,34 @@
   padding-left: 10rpx;
 }
 
+.ivestment-c{
+  position: relative;
+  box-sizing:border-box;
+  width: 100%;
+  max-height: 500px;
+  overflow-y: auto;
+  height: auto;
+}
+
+.showBox {
+  transition: max-height 1s;
+  height: auto;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.hideBox {
+  transition: height 1s;
+  height: 0;
+  padding: 0;
+}
+
 .index_other{
   margin-top: 10rpx;
-  height: 150rpx;
+  height: 130rpx;
   width: 100%;
   display: flex;
   flex-flow: row;
+  overflow-y: auto;
 }
 
 .other_element{
@@ -50,7 +72,7 @@
   padding-bottom: 15rpx;
   border: 1rpx solid #b3b3b3;
   width: 700rpx;
-  height: 90rpx;
+  height: 70rpx;
   margin-left: 20rpx;
   margin-top: 40rpx;
   border-radius: 10rpx;
@@ -110,9 +132,11 @@
 }
 
 .top-swich-btn {
+  display: flex;
+  align-items: center;
   background-color: none;
   letter-spacing: 3rpx;
-  height: 50rpx;
+  height: 70rpx;
   color: #666;
   font-size: 30rpx;
 }
@@ -164,7 +188,6 @@ button {
 
 .maptype{
   z-index: 999;
-  
 }
 
 

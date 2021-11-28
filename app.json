@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/campus/campus",
     "pages/home/home",
+    "pages/campus/campus",
     "pages/my/my",
     "pages/mode/mode",
     "pages/about/about",
@@ -21,17 +21,17 @@
   },
   "plugins": {
     "routePlan": {
-      "version": "1.0.17",
+      "version": "1.0.18",
       "provider": "wx50b5593e81dd937a"
-    },
+      },
     "subway": {
       "version": "1.0.12",
       "provider": "wx6aaf93c4435fa1c1"
       },
-      "chooseLocation": {
-        "version": "1.0.8",
-        "provider": "wx76a9a06e5b4e693e"
-        }
+    "chooseLocation": {
+      "version": "1.0.8",
+      "provider": "wx76a9a06e5b4e693e"
+      }
   },
   "tabBar": {
     "color": "#707070",
@@ -52,8 +52,8 @@
         "text": "校园风光"
       },
       {
-        "selectedIconPath": "/image/我的选中.png",
-        "iconPath": "/image/我的.png",
+        "selectedIconPath": "/image/我的(3_).png",
+        "iconPath": "/image/我的(3).png",
         "pagePath": "pages/my/my",
         "text": "我的"
       }
