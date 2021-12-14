@@ -9,6 +9,7 @@ Page({
 
   data: {
     showUp:false,
+    hasonload:false,//免得初始时，onshow中又onload多一次
     task: {},
     buildData: app.globalData.map,
     hidden: true,
@@ -30,7 +31,7 @@ Page({
     endPoint: null,
     //获取当前分类
     currentdatabase: null,
-    modalimg: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
+    modalimg: null,
     modalname: null,
     modaladdress: null,
     hasshow:false,
@@ -392,13 +393,13 @@ Page({
   nearby_search: function () {
     var that = this;
     var text = that.data.inputvalue;
-    console.log(that.data.inputvalue);
     // 调用接口
     qqmapsdk.search({
       keyword: text, //搜索关键词
       rectangle:'22.894908,113.868604,22.910489,113.880713',//限制矩形范围（左下右上）
       location: '22.902684,113.875159', //设置周边搜索中心点
       success: function (res) { //搜索成功后的回调
+        console.log(res)
         var texttitle = '共找到' + res.data.length + '个地点'
         wx.showToast({
           title: texttitle,
@@ -445,7 +446,6 @@ Page({
         }
       },
       fail: function (res) {
-        console.log(res);
         wx.showToast({
           title: '抱歉，搜索错误',
           icon: 'fail',
@@ -477,7 +477,7 @@ Page({
   },
   //点击地点进行路径规划
   onPointTap: function (e) {
-    console.log(e)
+    // console.log(e)
     var that = this;
     var lat = ''; // 获取点击的markers经纬度
     var lon = ''; // 获取点击的markers经纬度
@@ -507,25 +507,24 @@ Page({
       'longitude': lon
     });
 
-    if (currentdatabase[markerId - 1].name != null) {
+    if (currentdatabase[markerId - 1].name != null) {//markerid由1开始，因此-1；点击后显示弹出框
       that.setData({
         hidden: false,
-        modalname: currentdatabase[markerId - 1].name
+        modalname: currentdatabase[markerId - 1].name,
+        modalimg: currentdatabase[markerId - 1].image,
+        modaladdress: currentdatabase[markerId - 1].address,
+        startPoint: startPoint,
+        endPoint: endPoint
       })
-    } else {
+    } else if (currentdatabase[markerId - 1].title != null) {
       that.setData({
         hidden: false,
-        modalname: currentdatabase[markerId - 1].name
+        modalname: currentdatabase[markerId - 1].title,
+        modaladdress: currentdatabase[markerId - 1].address,
+        startPoint: startPoint,
+        endPoint: endPoint
       })
     }
-    
-    that.setData({
-      hidden: false,
-      modalimg: currentdatabase[markerId - 1].image,
-      modaladdress: currentdatabase[markerId - 1].address,
-      startPoint: startPoint,
-      endPoint: endPoint
-    })
   },
   // 路径规划
   // test: function () {
@@ -580,10 +579,10 @@ Page({
     });
     var that = this;
     mylocation.get().then(res => {
+      console.log(res)
       that.data.diydata = res.data
       //拿到res=option.id后用setData渲染到界面
     })
-
     // console.log(that.data.diydata);
     var study = that.data.buildData[1].data;
     var eat = that.data.buildData[2].data;
@@ -593,6 +592,7 @@ Page({
     var admi = that.data.buildData[6].data;
     var ador = that.data.buildData[7].data;
     that.setData({
+      hasonload:true,
       eatdata: eat,
       studydata: study,
       rundata: run,
@@ -685,7 +685,11 @@ Page({
     });
   },
   onShow: function () {
-    this.onLoad();//会触发两次
+    var that = this;
+    if(!that.data.hasonload){
+      this.onLoad();
+    }
+    this.data.hasonload=false;
   },
   onShareAppMessage: function (res) {
 		return {

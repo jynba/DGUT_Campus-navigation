@@ -20,6 +20,17 @@
   padding-left: 10rpx;
 }
 
+
+.background_main{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 999;
+  background-color: #fffbfb;
+  display: flex;
+  flex-direction: column;
+}
+
 .title-text{
   position: relative;
   display: flex;
@@ -33,6 +44,14 @@
   line-height: 45px;
   font-size: 40rpx;
 }
+.after{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 10px;
+  color: #666;
+}
 
 
 .swiper {
@@ -42,7 +61,7 @@
 }
 .slide-image{
   height: 400rpx;
-  width: 80%;
+  width: 90%;
   border-radius: 20rpx;
 }
 .center {
@@ -52,8 +71,6 @@
   display: flex;
   justify-content: center;
 }
-
-
 .navigator-box {
   opacity: 0;
   position: relative;
@@ -75,9 +92,13 @@
   display: flex;
   justify-content: left;
   align-items: center;
+  padding-bottom: 10rpx;
 }
 
 .navigator:before {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   position: absolute;
   left: 30rpx;
   top: 0;
@@ -92,11 +113,15 @@
 
 .title-text .navigator-text {
   position: relative;
-  width: 70%;
+  padding-bottom: 10rpx;
+}
+.navigator-left{
+    width: 80%;
 }
 .navigator-time{
+  width: 150rpx;
+  padding-right: 10rpx;
   position: relative;
-  right: 2px;
   color: #666;
 }
 .navigator-arrow {
@@ -120,11 +145,15 @@
 }
 
 .kind-list-item {
-  margin: 20rpx 0;
+  height: auto;
+  margin: 10rpx 30rpx;
+  padding: 25rpx 0;
   background-color: #fff;
-  border-radius: 4rpx;
   overflow: hidden;
-  border-bottom: 1px dashed #888;
+
+  border-radius: 50px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .kind-list-item:first-child {
@@ -132,11 +161,11 @@
 }
 
 .kind-list-text {
+  margin-top: 10rpx;
   flex: 1;
   font-weight: bold;
   width: 100%;
   color:#666;
-  line-height: 45px;
   font-size: 40rpx;
 }
 
@@ -148,11 +177,7 @@
 .kind-list-item-hd {
   display: flex;
   align-items: center;
-  transition: opacity 0.3s;
-}
-
-.kind-list-item-hd-show {
-  opacity: 0.2;
+  /* transition: opacity 0.3s; */
 }
 
 .kind-list-item-bd {

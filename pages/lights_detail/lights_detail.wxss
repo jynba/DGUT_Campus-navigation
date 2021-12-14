@@ -1,0 +1,30 @@
+.swiper {
+  margin-top: 30rpx;
+  height: 400rpx;
+  width: 100%;
+}
+.slide-image{
+  height: 400rpx;
+  width: 90%;
+  border-radius: 20rpx;
+}
+.center {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.title{
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+}
+.content{
+  font-size: 14px;
+  color: #616466;
+  padding-top: 10px;
+  background-color: #FFF;
+  line-height: 1.5;
+}

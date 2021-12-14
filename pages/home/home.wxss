@@ -92,7 +92,7 @@
   border: none;
   border-radius: 10rpx;
   width: 60vw;
-  height: 15vh;
+  height: 50rpx;
   text-indent:10rpx;
 }
 .line{

@@ -1,0 +1,13 @@
+<view class="images_box" wx:if="{{imglist.length!=0}}">
+  <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
+    <block wx:for="{{imglist}}" wx:for-index="index">
+      <swiper-item>
+        <view class="center">
+          <image src="{{item}}" class="slide-image" mode="aspectFill" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="title"><text>{{name}}</text></view>
+<view class="content"><text>{{describe}}</text></view>

@@ -1,39 +1,42 @@
 /* pages/my/my.wxss */
-
-.background {
-  width: 100%;
-  position: relative;
-  z-index: 999;
-  border-bottom-right-radius: 20rpx;
-  border-bottom-left-radius: 20rpx;
-  background: #77aeec;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: row;
+.page{
+  position: absolute;
+  height: 100%;
 }
 
-/*
-#6BC5D2 #A5E9DB 769FCD F2A379 #90A4Ae
+/*  #6BC5D2 #A5E9DB 769FCD F2A379 #90A4Ae
+  * header
 */
-.top {
-  margin-left: 1em;
-  display: flex;
-  align-items: left;
-  justify-content: center;
-  flex-direction: column;
+.header{
+  align-items: center;
+  height: auto;
+  overflow: hidden;
+  width: 750rpx;
+  position: relative;
+}
+.header .background {
+  top: -150rpx;
+  height: auto;
+  left: -100rpx;
+  width: 1000rpx;
+  position: relative;
+  z-index: -99;
+  transform: rotate(-8deg);
+  background: #77aeec;
 }
 
-.item {
-  display: flex;
-  flex-direction: row;
+ .bg {
+  height: 360rpx;
+  left: -100rpx;
+  position: absolute;
+  top: -100rpx;
+  transform: rotate(-8deg);
+  width: 1000rpx;
+  z-index: -99;
 }
-
-
 
 .title_text {
   width: 100%;
-  top: 1em;
   color: white;
   line-height: 45px;
   text-align: center;
@@ -42,51 +45,93 @@
 }
 
 .username {
-  position: relative;
-  top: 40%;
+  position: absolute;
+  top: 35%;
   left: 80rpx;
-  font-size: 70rpx;
   color: white;
+  z-index: 10;
+  font-size: 56rpx;
+  font-weight: 700;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 30rpx;
+}
+
+.icon{
+  top: 40%;
+  right: 40%;
+  z-index: 100;
+  position: absolute;
 }
 
 .title_icon {
-  position: relative;
-  top: 40%;
-  right: 40rpx;
+  border: 8rpx solid hsla(0,0%,100%,.6);
+  border-radius: 100rpx;
+  position: absolute;
   overflow: hidden;
   border-radius: 50%;
   display: flex;
-  width: 150rpx;
-  height: 150rpx;
-  animation: ani 2s linear infinite;
+  width: 180rpx;
+  height: 180rpx;
 }
 
+.circle_icon{
+  animation: ani 6s linear infinite;
+  background: hsla(0,0%,100%,.3);
+  border-radius: 200rpx;
+  position: absolute;
+  width: 200rpx;
+  height: 200rpx;
+  z-index: -1;
+}
 
 @keyframes ani {
   0% {
-    box-shadow: 0 0 10px #fff
-  }
-
-  25% {
-    box-shadow: 0 0 20px #fff
-  }
-
-  50% {
-    box-shadow: 0 0 30px #fff
-  }
-
-  75% {
-    box-shadow: 0 0 20px #fff
-  }
-
-  100% {
-    box-shadow: 0 0 20px #fff
-  }
+    opacity: .5;
+    transform: scale(1);
 }
 
+100% {
+    opacity: 0;
+    transform: scale(3);
+}
+}
+/*body
+*/
+.body {
+  height: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0rpx;
+}
+
+/*每日一句*/
+.day{
+  padding-top: 0rpx;
+  position: relative;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  color: #515151;
+  padding-bottom: 20rpx;
+}
+
+.all_item{
+  position: absolute;
+  padding-top: 0rpx;
+  height: auto;
+  width: 100%;
+}
+
+.item {
+  position: relative;
+  left: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
 
 .text1 {
-  color: black;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -108,7 +153,7 @@
 }
 
 .text2 {
-  color: black;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -130,7 +175,7 @@
 }
 
 .text3 {
-  color: black;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -152,7 +197,7 @@
 }
 
 .text4 {
-  color: black;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -174,7 +219,7 @@
 }
 
 .text5 {
-  color: #666;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -191,11 +236,11 @@
   background-position: center;
   background-size: cover;
   margin-right: 4px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 .text6 {
-  color: #666;
+  color: #515151;
   line-height: 100rpx;
   text-align: center;
   position: relative;
@@ -212,12 +257,12 @@
   background-position: center;
   background-size: cover;
   margin-right: 0px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 button {
   background-color:white;
   width: fit-content;
-  padding: 0rpx;
+  height: auto;
 }

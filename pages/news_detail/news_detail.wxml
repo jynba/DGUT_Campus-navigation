@@ -1,0 +1,16 @@
+<view class='background' style='height:70px'>
+  <view>
+    <image src="/image/dgut.png" class='picture'></image>
+  </view>
+  <view class="title"><text>DGUT</text></view>
+</view>
+<view class="container1">
+    <view class="art-header">
+        <image wx:if="{{img}}" src="{{img}}" class="art-img"/>
+        <view class="art-title">{{art.articleView.title}}</view>
+        <view class="art-source">{{art.image_source}}</view>
+    </view>
+    <view class="art-content">
+      {{art.articleContent}}
+    </view> 
+</view>

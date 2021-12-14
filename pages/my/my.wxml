@@ -1,30 +1,46 @@
 <!--pages/my/my.wxml-->
-<view class='background' style='height:200px'>
-  <open-data type="userNickName" class="username"></open-data>
-  <view class='title_icon' bindtap="myCenterPage">
-    <open-data type="userAvatarUrl"></open-data>
+<view class="page">
+  <view class="header">
+    <view class='background' style='height:200px'></view>
+    <open-data type="userNickName" class="username"></open-data>
+    <view class="icon">
+      <view class="circle_icon"></view>
+      <view class="circle_icon" style="animation-delay:2s;"></view>
+      <view class="circle_icon" style="animation-delay:4s;"></view>
+      <view class='title_icon' bindtap="myCenterPage">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </view>
   </view>
-  <view class='title_text'>我</view>
-</view>
+  <view class="body">
+    <view class="day">
+      <view class="sentence">
+        <text>{{sentence}}</text>
+      </view>
+      <view class="translation">
+        <text>{{translation}}</text>
+      </view>
+    </view>
+    <view class="all_item">
+      <view class="item" bindtap="navTo">
+        <text class="text2">更换主题颜色</text>
+      </view>
+      <view class="item" bindtap="navTo1">
+        <text class="text1">管理员模式</text>
+      </view>
+      <view class="item" bindtap="navTo2">
+        <text class="text3">帮助中心</text>
+      </view>
+      <view class="item" bindtap="clickImg">
+        <text class="text4">关于我们</text>
+      </view>
+      <button open-type="share">
+        <text class="text5">转发给好友</text>
+      </button>
+      <button open-type="contact" bindcontact="handleContact">
+        <text class="text6">客服消息</text>
+      </button>
+    </view>
 
-<view class="top">
-  <view class="item" data-target="setting" bindtap="navTo1">
-    <text class="text1"> 管理员模式</text>
-  </view>
-  <view class="item" data-target="setting" bindtap="navTo">
-    <text class="text2">更换主题颜色</text>
-  </view>
-  <view class="item" data-target="setting" bindtap="navTo2">
-    <text class="text3">帮助中心</text>
-  </view>
-  <view class="item" data-target="setting" bindtap="clickImg">
-    <text class="text4">关于我们</text>
   </view>
 </view>
-
-<button open-type="share">
-    <text class="text5">转发给好友</text>
-  </button>
-  <button open-type="contact" bindcontact="handleContact">
-    <text class="text6">客服消息</text>
-  </button>

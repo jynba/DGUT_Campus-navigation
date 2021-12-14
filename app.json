@@ -5,13 +5,20 @@
     "pages/my/my",
     "pages/mode/mode",
     "pages/about/about",
-    "pages/help/help"
+    "pages/help/help",
+    "pages/lights/lights",
+    "pages/lights_detail/lights_detail",
+    "pages/uplights/uplights",
+    "pages/news/news",
+    "pages/news_detail/news_detail"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationStyle": "custom"
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "莞工地图",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
   },
+  
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "permission": {

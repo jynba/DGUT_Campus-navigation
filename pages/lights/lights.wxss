@@ -1,0 +1,106 @@
+.background {
+  width: 100%;
+  position: relative;
+  z-index: 999;
+  background: #fff;
+  display: flex;
+  flex-flow: row;
+}
+
+.waterfall {
+  padding: 0 35rpx;
+}
+
+.header {
+  width: 680rpx;
+  height: 65rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto 20rpx;
+  line-height: 65rpx;
+  font-size: 32rpx;
+  color: #999;
+}
+.header text {
+  font-size: 32rpx;
+  color: #000;
+}
+.header_after{
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+.header_afterimg{
+  width: 35rpx;
+  height: 35rpx;
+  margin: 0 0;
+  vertical-align: middle;
+}
+
+.campus_lights{
+  overflow: hidden;
+}
+.lights_content{
+  width: 680rpx;
+  padding: 0 0;
+}
+.lights_content .pro_l {
+  width: 330rpx;
+  float: left;
+}
+.lights_content .pro_r{
+  width: 330rpx;
+  float: right;
+}
+.lights_content:after{
+  content: "";
+  width: 336rpx;
+}
+.lights_item {
+  display: inline-block;
+  background:#fff;
+  margin-bottom: 60rpx;
+  border-radius: 10rpx;
+  width: 330rpx;
+  position: relative;
+}
+.lights_item .item-img{
+  width:330rpx;
+  height: auto;
+  border-radius:10rpx;
+}
+
+.user_content{
+  flex-direction: row;
+  display: flex;
+  white-space: nowrap;
+}
+.user{
+  position: relative;
+}
+.user_ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user_Name{
+  margin-left: 10rpx;
+  line-height: 40rpx;
+  font-size: 22rpx;
+  color: #666;
+}
+.like{
+  position: absolute;
+  top:0;
+  right: 0;
+}
+.like_icon{
+  width: 38rpx;
+  height: 33rpx;
+}
+.like_icon image{
+  width: 100%;
+  height: 100%;
+}

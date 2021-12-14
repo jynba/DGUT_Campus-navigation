@@ -1,4 +1,5 @@
-var app = getApp();
+var utils = require('../../utils/util.js')
+var app = getApp()
 Page({
   data: {
     id: "",
@@ -17,7 +18,28 @@ Page({
   //   console.log(e.detail.query)
   // },
 
-  onLoad: function () {},
+  onLoad: function () {
+    
+    var that = this;
+    const now = new Date();
+    var today = utils.formatTime(now) //若要增加，可先去掉-，变为number，++后再变回
+    console.log(today)
+    wx.request({
+      url: 'https://apiv3.shanbay.com/weapps/dailyquote/quote/?date=' + today,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      success(res) {
+        // console.log(res)
+        that.setData({
+          translation: res.data.translation,
+          sentence: res.data.content,
+          date: today,
+          author: res.data.author
+        })
+      }
+    })
+  },
 
   onShareAppMessage: function (res) {
     return {
@@ -40,11 +62,6 @@ Page({
   navTo2: function (e) {
     wx.navigateTo({
       url: '/pages/help/help'
-    });
-  },
-  navTo3: function (e) {
-    wx.navigateTo({
-      url: '/pages/about/about'
     });
   },
 })

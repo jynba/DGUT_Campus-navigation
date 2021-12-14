@@ -1,4 +1,4 @@
 {
-  "navigationBarTitleText": "~                         个人页面",
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationStyle": "custom"
 }

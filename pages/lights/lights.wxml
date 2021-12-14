@@ -1,0 +1,71 @@
+<view class="header">
+  <view>
+    <!-- <text>{{PageCount}}</text> -->作品展示
+  </view>
+  <view class="header_after"bindtap="submit">
+    上传作品
+    <image class="header_afterimg" src="/image/tianjia.png"></image>
+  </view>
+</view>
+
+
+<view class="waterfall">
+  <scroll-view scroll-y="{{true}}" lower-threshold="{{200}}">
+    <view class="campus_lights">
+      <view class="lights_content">
+        <view id="pro_l" class="pro_l">
+          <view wx:for="{{productCon_l}}" wx:for-item="item" wx:for-index="ids" wx:key="item">
+            <view class="lights_item">
+              <navigator url="/pages/lights_detail/lights_detail?id={{item._id}}" open-type="navigate" hover-class='none'>
+                <image class="item-img" src="{{item.imglist[0]}}" mode="widthFix"></image>
+              </navigator>
+
+              <view wx:if="{{productCon_l}}" class="user">
+                <view class="user_content">
+                  <view class="user_ava">
+                    <open-data type="userAvatarUrl"></open-data>
+                  </view>
+                  <open-data type="userNickName" class="user_Name"></open-data>
+                  <view class="like">
+                    <view class='like_icon' wx:if="{{item.isFavorite}}">
+                      <image data-favoriteid="{{item.id}}" src="{{like}}" bindtap='islike'></image>
+                    </view>
+                    <view class='like_icon' wx:else="{{!item.isFavorite}}">
+                      <image data-favoriteid="{{item.id}}" src="{{unlike}}" bindtap='islike'></image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view id="pro_r" class="pro_r">
+          <view wx:for="{{productCon_r}}" wx:for-item="item" wx:for-index="ids" wx:key="item">
+            <view class="lights_item">
+              <navigator url="/pages/lights_detail/lights_detail?id={{item._id}}" open-type="navigate" hover-class='none'>
+                <image class="item-img" src="{{item.imglist[0]}}" mode="widthFix"></image>
+              </navigator>
+
+              <view wx:if="{{productCon_r}}" class="user">
+                <view class="user_content">
+                  <view class="user_ava">
+                    <open-data type="userAvatarUrl"></open-data>
+                  </view>
+                  <open-data type="userNickName" class="user_Name"></open-data>
+                  <view class="like">
+                    <view class='like_icon' wx:if="{{item.isFavorite}}">
+                      <image data-favoriteid="{{item.id}}" src="{{like}}" bindtap='islike'></image>
+                    </view>
+                    <view class='like_icon' wx:else="{{!item.isFavorite}}">
+                      <image data-favoriteid="{{item.id}}" src="{{unlike}}" bindtap='islike'></image>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,37 @@
+<form bindsubmit="onSubmit" class="form_lights">
+  <input class='title' placeholder='取个标题吧' name='name'></input>
+  <view style="padding-top: 10rpx;height:200rpx;width: 100%;text-align: center;">
+      <textarea auto-focus="true"auto-height="true"name="describe" style="width: 100%;"
+      placeholder="有什么想要描述的呢？"/>
+  </view>
+
+  <!-- 图片 -->
+  <view class="images_box"  wx:if="{{imglist.length!=0}}">
+    <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
+      <block wx:for="{{imglist}}" wx:for-index="index">
+        <swiper-item>
+          <view class="center">
+            <image src="{{item}}" class="slide-image" mode="aspectFill" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- <block wx:key="imglist" wx:for="{{imglist}}">
+      <view class='img-box'>
+        <image class='img' src='{{item}}'></image>
+        <view class='img-delete' data-deindex='{{index}}' bindtap='imgDelete1'>
+          <image class='img' src='../../image/delet.png'></image>   
+        </view>
+      </view>
+    </block>
+    <view class='img-box' bindtap='addpic'>
+      <image class='img' src='../../image/add.png'></image>   
+    </view> -->
+  </view>
+  <button bindtap='upload'><text>上传图片</text></button>
+
+  <button class='back' form-type="submit">
+    <text>提交</text>
+  </button>
+</form>

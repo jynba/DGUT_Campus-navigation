@@ -41,6 +41,24 @@
           "pathName": "pages/home/home",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/lights/lights",
+          "pathName": "pages/lights/lights",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/uplights/uplights",
+          "pathName": "pages/uplights/uplights",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/news/news",
+          "pathName": "pages/news/news",
+          "query": "",
+          "scene": null
         }
       ]
     }

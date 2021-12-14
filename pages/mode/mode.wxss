@@ -63,3 +63,8 @@ button{
 .bottomBtn > view:not(:last-of-type){
   margin-bottom: 25rpx;
 }
+
+.imagesize{
+  height: 500rpx;
+  width: 500rpx;
+}

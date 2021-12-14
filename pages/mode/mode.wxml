@@ -1,7 +1,4 @@
 <!--pages/mode/mode.wxml-->
-<view class='background' style='height:70px'>
-  <view class='title_text'>管理markers</view>
-</view>
 
 <form bindsubmit="onSubmit" class="form_pos">
     <button class='btn' id='btn' bindtap="getmyPlace">
@@ -30,5 +27,4 @@
 <view class="bottomBtn">
 <view class="back" bindtap="showmap" hover-class="hover">显示当前makers</view>
 <view class="back" bindtap="deletefunction" hover-class="hover">清除所有自定义makers</view>
-<view class="back" bindtap="pageBack" hover-class="hover">返回</view>
 </view>
