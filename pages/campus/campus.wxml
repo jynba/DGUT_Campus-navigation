@@ -8,7 +8,7 @@
 <view class="background_main">
   <view class="center">
     <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
-      <block wx:for="{{lunbo}}" wx:for-index="index">
+      <block wx:for="{{lunbo}}" wx:key="url" wx:for-index="index">
         <swiper-item>
           <view class="center">
             <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
@@ -23,7 +23,7 @@
       <text class="after">more</text>
     </view>
   </view>
-  <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+  <block wx:for-items="{{list}}"  wx:key="id">
     <view class="kind-list-item" bindtap="nav">
       <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}">
         <!-- bindtap="kindToggle" -->
@@ -33,13 +33,12 @@
       </view>
       <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
         <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-          <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+          <block wx:for-items="{{item.pages}}" wx:for-item="page"  wx:key="key">
             <view class="navigator">
             <view class="navigator-left">
               <view class="navigator-text">{{page.title}}</view></view>
               <view class="navigator-time">{{page.createTime}}</view>
-              <!-- icon -->
-              <view class="navigator-arrow"></view>
+              <!-- <view class="navigator-arrow"></view> -->
             </view>
           </block>
         </view>

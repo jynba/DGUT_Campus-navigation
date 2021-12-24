@@ -59,6 +59,12 @@
           "pathName": "pages/news/news",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/lights_detail/lights_detail",
+          "query": "id=133e253361c300b601ad026369ce1b2e",
+          "scene": null
         }
       ]
     }

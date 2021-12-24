@@ -38,6 +38,37 @@
   vertical-align: middle;
 }
 
+/*展示的选项 */
+.cu-tag {
+	font-size: 24rpx;
+	vertical-align: middle;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 0rpx 16rpx;
+	height: 48rpx;
+	font-family: Helvetica Neue, Helvetica, sans-serif;
+	white-space: nowrap;
+}
+
+.padding{
+	padding-bottom: 30rpx;
+}
+.bg-white {
+	background-color: white;
+	color: rgb(102, 100, 100);
+}
+.round {
+	border-radius: 5000rpx;
+}
+.bg-blue {
+	background-color: rgb(125, 155, 253);
+	color: white;
+}
+
+
 .campus_lights{
   overflow: hidden;
 }
@@ -70,21 +101,26 @@
   height: auto;
   border-radius:10rpx;
 }
+.user1_ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+}
 
 .user_content{
   flex-direction: row;
   display: flex;
-  white-space: nowrap;
+  white-space: nowrap;/*合并空白*/
 }
 .user{
   position: relative;
 }
-.user_ava{
+/* .user_ava{
   width: 40rpx;
   height: 40rpx;
   border-radius: 50%;
   overflow: hidden;
-}
+} */
 .user_Name{
   margin-left: 10rpx;
   line-height: 40rpx;
@@ -94,7 +130,9 @@
 .like{
   position: absolute;
   top:0;
-  right: 0;
+  display: flex;
+  flex-direction: row;
+  right: 0rpx;
 }
 .like_icon{
   width: 38rpx;
@@ -103,4 +141,11 @@
 .like_icon image{
   width: 100%;
   height: 100%;
+}
+.like_nums{
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  display: inline;
+  font-size: 35rpx;
+  color: #666;
 }

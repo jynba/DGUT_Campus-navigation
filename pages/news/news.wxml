@@ -1,13 +1,22 @@
 <view class="news-item-container">
-    <block wx:for="{{list}}" wx:for-index="id">
-      <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
-      <navigator wx:else url="../news_detail/news_detail?id={{item.articleId}}">
-        <view class="news-item" >
-          <view class="news-item-left">
-            <text class="news-item-title">{{item.title}}</text>
-          </view>
-          <view class="news-item-time">{{item.createTime}}</view>
+
+  <scroll-view scroll-x="true" class="bg-white nav solid-bottom">
+    <view class="flex text-center">
+      <view wx:for="{{navItems}}" wx:key="idx" wx:for-index="idx" data-data="{{item}}" class="cu-item flex-sub {{item.index==tabCur?'text-green cur':''}}" bindtap='tabSelect' data-id="{{item.index}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <block wx:for="{{list}}" wx:for-index="id">
+    <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
+    <navigator wx:else url="../news_detail/news_detail?id={{item.articleId}}">
+      <view class="news-item">
+        <view class="news-item-left">
+          <text class="news-item-title">{{item.title}}</text>
         </view>
-      </navigator>
-    </block>
-  </view>
+        <view class="news-item-time">{{item.createTime}}</view>
+      </view>
+    </navigator>
+  </block>
+</view>

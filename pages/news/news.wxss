@@ -1,4 +1,43 @@
 
+.text-center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.text-green{
+  color: rgb(52, 97, 196);
+}
+.cu-item {
+	padding: 30rpx 30rpx 30rpx 120rpx;
+	height: auto
+}
+.flex-sub {
+	width: calc(100% - 96rpx - 60rpx - 20rpx);
+}
+/*
+导航栏
+*/
+.nav {
+	white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.nav .cu-item {
+	height: 80rpx;
+	display: inline-block;
+	line-height: 80rpx;
+	margin: 0 10rpx;
+	padding: 0 20rpx;
+}
+
+.nav .cu-item.cur {
+	border-bottom: 4rpx solid;
+}
+
+/*新闻栏*/
 .sub-title{
   background-color: #fff;
   color: #7385bd;

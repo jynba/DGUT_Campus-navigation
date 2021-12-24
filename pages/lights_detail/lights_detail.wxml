@@ -3,11 +3,24 @@
     <block wx:for="{{imglist}}" wx:for-index="index">
       <swiper-item>
         <view class="center">
-          <image src="{{item}}" class="slide-image" mode="aspectFill" />
+          <image src="{{item}}" class="slide-image" mode="aspectFit" bindtap="enlarge" />
         </view>
       </swiper-item>
     </block>
   </swiper>
+</view>
+<view class="user_content">
+  <image class="user1_ava" src="{{avatarUrl}}"></image>
+  <text class="user_Name">{{nickName}}</text>
+  <view class="like">
+    <view class='like_icon' wx:if="{{isFavorite}}">
+      <image data-favoriteid="{{_id}}" src="{{like}}" bindtap='islike'></image>
+    </view>
+    <view class='like_icon' wx:else="{{!isFavorite}}">
+      <image data-favoriteid="{{_id}}" src="{{unlike}}" bindtap='islike'></image>
+    </view>
+    <text class="like_nums">{{like_nums}}</text>
+  </view>
 </view>
 <view class="title"><text>{{name}}</text></view>
 <view class="content"><text>{{describe}}</text></view>

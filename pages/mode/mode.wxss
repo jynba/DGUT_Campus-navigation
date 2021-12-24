@@ -33,24 +33,23 @@ button{
   position: relative;
 }
 .form_pos{
-  position: relative;
-  top: 15%;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  margin-top: 20rpx;
   text-align: center;
+  justify-content: center;
   color: rgb(44, 40, 40);
-  background: rgba(245,245,255,.3);
   width: 100%;
-  border: 2rpx solid rgba(205,205,215,.5);
   box-sizing: border-box;
 }
 .bottomBtn > view{
-  width: 100%;
+  margin: 20rpx 0;
   height: 75rpx;
   line-height: 75rpx;
   font-size: 30rpx;
   font-weight: bold;
   letter-spacing: 10rpx;
-  text-indent: 10rpx;
-  text-align: center;
   color: #666;
   border-radius: 20rpx;
   background: rgba(245,245,255,.3);
@@ -63,8 +62,14 @@ button{
 .bottomBtn > view:not(:last-of-type){
   margin-bottom: 25rpx;
 }
-
+.imgpos{
+  align-items: center;
+  justify-content: center;
+}
 .imagesize{
   height: 500rpx;
   width: 500rpx;
+}
+.back{
+  margin: 30rpx 0;
 }

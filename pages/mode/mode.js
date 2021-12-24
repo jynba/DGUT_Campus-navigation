@@ -29,7 +29,6 @@ Page({
           //~使得每次上传的图片名字不一样
           filePath: res.tempFilePaths[0],
         }).then(res=>{
-          console.log(res.fileID)
           this.setData({
             image:res.fileID
           })
@@ -42,13 +41,6 @@ Page({
   
   onLoad: function (options) {
 
-  },
-  showmap:function(options){
-      location.get().then(res=>{
-        //拿到res=option.id后用setData渲染到界面
-        this.data.task=res.data;
-        console.log(this.data.task);
-      })
   },
   getmyPlace: function () {
     var that = this;
@@ -79,6 +71,7 @@ Page({
       }
     }).then(res=>{
       that.data.id=res._id;
+      console.log(that.data.id)
       wx.showToast({
         title: '上传成功',
         icon:'success',
@@ -91,6 +84,15 @@ Page({
           },1000)
         },
       })
+    })
+  },
+  enlarge: function (e) {
+    wx.previewImage({
+      urls: [this.data.image], //需要预览的图片http链接列表，注意是数组
+      current: '', // 当前显示图片的http链接，默认是第一个
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
     })
   },
   deletefunction:function(){

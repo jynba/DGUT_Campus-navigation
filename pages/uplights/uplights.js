@@ -10,9 +10,40 @@ Page({
     imglist: [], //选择图片
     fileIDs: [], //上传云存储后的返回值
     name: "",
-    describe: ""
+    describe: "",
+    submit:false,
+    _id:"",
+    userInfo: "",
+    nickName:"",
+    avatarUrl:"",
+    like_nums:0,
   },
 
+  onLoad:function(){
+    var userInfo = wx.getStorageSync('userInfo')
+    this.setData({
+      userInfo: userInfo,
+      nickName: userInfo.nickName,
+      avatarUrl: userInfo.avatarUrl,
+    })
+  },
+  onUnload: function () {
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    if(this.data.submit){
+      console.log(prevPage.data)
+      prevPage.setData({
+        lastdata: [this.data,...prevPage.data.lastdata],
+        productCon_l:[],
+        productCon_r:[],
+      })
+      prevPage.concatData(prevPage.data.lastdata)
+      prevPage.concatData(prevPage.data.allLights)
+      prevPage.pageData.skip=prevPage.pageData.skip+1;
+      prevPage.data.showinfo=2;
+    }
+  },
   // 删除照片 &&
   imgDelete1: function (e) {
     let that = this;
@@ -99,6 +130,7 @@ Page({
   },
 
   onSubmit: function (e) {
+    this.data.submit=true;
     var that = this;
     // console.log(that.data.imglist)//本地文件路径
     // console.log(that.data.fileIDs)//云数据库路径
@@ -108,14 +140,24 @@ Page({
         icon:"none",
       })
     } else {
+      this.setData({
+        name: e.detail.value.name,
+        imglist: that.data.fileIDs,
+        describe: e.detail.value.describe,
+        createTime: db.serverDate()
+      })
       lights.add({
         data: {
           name: e.detail.value.name,
           imglist: that.data.fileIDs,
           describe: e.detail.value.describe,
-          createTime: db.serverDate()
+          createTime: db.serverDate(),
+          nickName: that.data.userInfo.nickName,
+          avatarUrl: that.data.userInfo.avatarUrl,
+          like_nums:0
         }
       }).then(res => {
+        that.data._id=res._id;
         wx.showToast({
           title: '上传成功',
           icon: 'success',

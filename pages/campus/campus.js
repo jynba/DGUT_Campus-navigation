@@ -72,7 +72,7 @@ Page({
           res.data.data.content[i].createTime=/\d{4}-\d{1,2}-\d{1,2}/g.exec(res.data.data.content[i].createTime)
           list[1].pages = list[1].pages.concat(res.data.data.content[i])
         }
-        console.log(list)
+        // console.log(list)
         that.setData({
           list: list
         })

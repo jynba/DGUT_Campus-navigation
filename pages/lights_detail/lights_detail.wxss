@@ -1,10 +1,10 @@
 .swiper {
   margin-top: 30rpx;
-  height: 400rpx;
+  height: 500rpx;
   width: 100%;
 }
 .slide-image{
-  height: 400rpx;
+  height: 500rpx;
   width: 90%;
   border-radius: 20rpx;
 }
@@ -18,13 +18,65 @@
 
 .title{
   position: relative;
+  padding-top: 30rpx;
   text-align: center;
   font-size: 16px;
 }
 .content{
+  justify-content: center;
   font-size: 14px;
   color: #616466;
   padding-top: 10px;
   background-color: #FFF;
   line-height: 1.5;
+}
+
+
+
+.user_content{
+  padding-top: 20rpx;
+  flex-direction: row;
+  display: flex;
+  white-space: nowrap;/*合并空白*/
+  justify-content: flex-end;
+}
+.user{
+  position: relative;
+}
+.user1_ava{
+  margin-right: 5rpx;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 100%;
+}
+.user_Name{
+  margin-right: 40rpx;
+  margin-left: 10rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #666;
+}
+.like{
+  position: relative;
+  margin-left: 10rpx;
+  top:2rpx;
+  display: flex;
+  flex-direction: row;
+  right: 20rpx;
+}
+.like_icon{
+  width: 38rpx;
+  height: 33rpx;
+  display: inline;
+}
+.like_icon image{
+  width: 100%;
+  height: 100%;
+}
+.like_nums{
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  display: inline;
+  font-size: 33rpx;
+  color: #666;
 }
