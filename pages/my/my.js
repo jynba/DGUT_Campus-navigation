@@ -17,7 +17,11 @@ Page({
   //   console.log(e.detail.path)
   //   console.log(e.detail.query)
   // },
-
+  copyText:function(){
+    wx.setClipboardData({
+      data:this.data.sentence+this.data.translation
+    })
+  },
   onLoad: function () {
     
     var that = this;

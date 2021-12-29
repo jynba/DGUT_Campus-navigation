@@ -12,7 +12,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // hasonload: false,
     productCon_l: [],
     productCon_r: [],
     unlike: 'https://tdsxcx.dxjujia.com/img/index/index_03.png',
@@ -26,10 +25,9 @@ Page({
     avatarUrl: "",
     nickName: "",
     like_nums: 0,
-    hasshow: false,
-    hotItems: ["最近更新","点赞最多"],
-    hotCur:0,
-    orderBy:"createTime"
+    hotItems: ["最近更新", "点赞最多", "我的作品"],
+    hotCur: 0,
+    orderBy: "createTime"
   },
 
   hotSelect: async function (e) {
@@ -38,7 +36,7 @@ Page({
     let orderBy = "createTime"
     switch (hotCur) {
       //最近更新
-      case 0:{
+      case 0: {
         orderBy = "createTime"
         break;
       }
@@ -47,35 +45,58 @@ Page({
         orderBy = "like_nums"
         break
       }
+      //我的作品
+      case 2: {
+        var order = true;
+        break
+      }
     }
     that.setData({
       hotCur: hotCur,
-      orderBy:orderBy,
-      productCon_l:[],
-      productCon_r:[]
+      orderBy: orderBy,
+      productCon_l: [],
+      productCon_r: [],
+      allLights:[],
     })
-    that.pageData.skip=0;
+    that.pageData.skip = 0;
     that.data.showinfo = 6;
-
-    await that.getData(res => {
-      that.concatData(that.data.lights)
-    },that.data.orderBy);
+    
+    if(!order){
+      await that.getData(res => {
+        that.concatData(that.data.lights)
+      }, that.data.orderBy);
+    }else{
+      wx.showLoading({
+        title: '正在玩命加载中',
+      })
+      wx.cloud.callFunction({
+        name: "Mylights"
+      }).then(res => {
+        that.setData({
+          lights: [...that.data.lights, ...res.result.data],
+          allLights: [...that.data.allLights, ...res.result.data],
+          isEndOfList:true
+        },res=>{
+          that.concatData(that.data.lights);
+          wx.hideLoading()
+        })
+      })
+    }
   },
 
-  
-  getData: function (callback,orderby) {
+
+  getData: function (callback, orderby) {
     if (!callback) {
       callback = res => {}
-    }//使得没传参是被允许的
+    } //使得没传参是被允许的
     wx.showLoading({
       title: '正在玩命加载中',
     })
     //一次显示6条数据；分页显示
-    //不能用limit()会导致调用concatdata出现混乱
 
     // console.log(this.pageData.skip)
     var that = this;
-    mylights.orderBy(orderby, 'desc')//按创建时间的最新开始排列
+    mylights.orderBy(orderby, 'desc') //按创建时间的最新开始排列
       .skip(this.pageData.skip)
       .limit(that.data.showinfo)
       .get()
@@ -87,14 +108,15 @@ Page({
         }, res2 => {
           this.pageData.skip = this.pageData.skip + that.data.showinfo;
           console.log(this.pageData.skip)
-          // query = wx.createSelectorQuery();方法2
-          // this.loopList(this.pageData.skip)
-
-          // that.concatData(that.data.lights)
           wx.hideLoading()
           callback();
         })
       })
+  },
+
+  localData:function(){
+    var data = wx.getStorageSync('data');
+
   },
   pageData: {
     skip: 0,
@@ -117,84 +139,24 @@ Page({
     //   })
     // })
 
-    // try {
-    // var value = wx.getStorageSync('data')
-    // if (value) {
-    //   this.data = value;
-    //   this.data.lights = this.data.allLights.slice(0) //必须深拷贝
-    //   this.setData({
-    //     productCon_l:[],
-    //     productCon_r:[],
-    //   })
-    //   this.concatData(this.data.lights)
-    // } else {
     // var lights = this.data.lights.slice(0) //必须深拷贝
     this.getData(res => {
       this.concatData(this.data.lights)
-    },this.data.orderBy);
-    this.data.hasshow = true;
-    // }
-    // } catch (e) {
-    //   console.log(e)
-    // }
-    // this.data.hasonload = true;
+    }, this.data.orderBy);
+    
   },
 
   onShow: function (e) {
-
-
     // if (!this.data.hasonload) {
     // console.log(this.data.lastdata)
     // this.concatData(this.data.lastdata)
     //全部放在uplights页面处理
 
-    // this.setData({
-    //   lights:[],
-    //   productCon_l: [],
-    //   productCon_r: [],
-    // })
-    // this.getData(res=>{
-    //   this.concatData(this.data.allLights)
-    // });
-    // }
-    // this.data.hasonload = false;
     // var pages = getCurrentPages();
     // var prevPage = pages[pages.length - 2]; //上一个页面
     // //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
     // console.log(prevPage)
   },
-
-  // loopList(index){
-  //   console.log(index)
-  //   let lights = this.data.lights;
-  //   let productCon_r=this.data.productCon_r;
-  //   let productCon_l=this.data.productCon_l;
-  //   if (!lights[index]) return;
-  //   // console.log("left"+leftHeight+"right"+rightHeight);
-  //   leftHeight <= rightHeight ? productCon_l.push(lights[index]) : productCon_r.push(lights[index]); //判断两边高度，来决定添加到那边
-  //   this.getBoxHeight(productCon_l, productCon_r).then(()=>{
-  //     index++;
-  //     this.loopList(index)
-  //   })
-  // },
-
-  // getBoxHeight(productCon_l, productCon_r) { //获取左右两边高度
-  //   return new Promise((resolve, reject) => {
-  //     this.setData({
-  //       productCon_l,
-  //       productCon_r
-  //     }, () => {
-  //       query.select('#pro_l').boundingClientRect();
-  //       query.select('#pro_r').boundingClientRect();
-  //       query.exec((res) => {
-  //         // console.log(res)
-  //         leftHeight = res[0].height; //获取左边列表的高度
-  //         rightHeight = res[1].height; //获取右边列表的高度
-  //         resolve();
-  //       });
-  //     });
-  //   })
-  // },
 
   concatData(data) {
     let concatBool = this.data.concatBool || true;
@@ -290,7 +252,8 @@ Page({
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(1)}"
+              data: "{like_nums : _.inc(1)}",
+
             }
           }).then((res) => {
             console.log(res)
@@ -302,7 +265,7 @@ Page({
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(-1)}"
+              data: "{like_nums : _.inc(-1)}",
             }
           }).then((res) => {
             console.log(res)
@@ -394,7 +357,7 @@ Page({
     this.data.showinfo = 2; //触底后一次获取两个，太多会出现异常
     this.data.isEndOfList || this.getData(res => {
       this.concatData(this.data.lights)
-    },this.data.orderBy);
+    }, this.data.orderBy);
   },
 
   /**

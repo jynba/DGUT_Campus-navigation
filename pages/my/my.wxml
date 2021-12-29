@@ -14,17 +14,14 @@
   </view>
   <view class="body">
     <view class="day">
-      <view class="sentence">
+      <view class="sentence" bindtap="copyText">
         <text>{{sentence}}</text>
       </view>
-      <view class="translation">
+      <view class="translation" bindtap="copyText">
         <text>{{translation}}</text>
       </view>
     </view>
     <view class="all_item">
-      <view class="item" bindtap="navTo">
-        <text class="text2">更换主题颜色</text>
-      </view>
       <view class="item" bindtap="navTo1">
         <text class="text1">管理员模式</text>
       </view>

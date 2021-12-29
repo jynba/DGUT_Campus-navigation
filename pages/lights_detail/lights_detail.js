@@ -1,7 +1,7 @@
 // pages/lights_detail/lights_detail.js
 const app = getApp()
 const db = wx.cloud.database(); //初始化数据库
-const mylights = db.collection('allLights')
+const mylights = db.collection('lights')
 Page({
 
   /**
@@ -17,7 +17,8 @@ Page({
     _id: "",
     unlike: 'https://tdsxcx.dxjujia.com/img/index/index_03.png',
     like: 'https://tdsxcx.dxjujia.com/img/index/index_02.png',
-    isFavorite: ""
+    isFavorite: "",
+    createTime:"",
   },
 
   /**
@@ -28,6 +29,8 @@ Page({
     for (let i = 0; i < data.productCon_r.length; i++) {
       if (options.id == data.productCon_r[i]._id) {
         let res = data.productCon_r[i];
+        res.createTime = /\d{4}-\d{1,2}-\d{1,2}/g.
+        exec(res.createTime)
         this.setData({
           name: res.name,
           imglist: res.imglist,
@@ -36,7 +39,8 @@ Page({
           like_nums: res.like_nums,
           avatarUrl: res.avatarUrl,
           _id: res._id,
-          isFavorite: res.isFavorite
+          isFavorite: res.isFavorite,
+          createTime: res.createTime
         })
         this.res = res;
         this.is = "right";
@@ -47,6 +51,8 @@ Page({
     for (let i = 0; i < data.productCon_l.length; i++) {
       if (options.id == data.productCon_l[i]._id) {
         let res = data.productCon_l[i];
+        res.createTime = /\d{4}-\d{1,2}-\d{1,2}/g.
+        exec(res.createTime)
         this.setData({
           name: res.name,
           imglist: res.imglist,
@@ -55,7 +61,8 @@ Page({
           like_nums: res.like_nums,
           avatarUrl: res.avatarUrl,
           _id: res._id,
-          isFavorite: res.isFavorite
+          isFavorite: res.isFavorite,
+          createTime: res.createTime
         })
         this.res = res;
         this.is = "left";

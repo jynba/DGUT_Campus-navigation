@@ -6,7 +6,7 @@
 </view>
 <view class="container1">
     <view class="art-header">
-        <image wx:if="{{img}}" src="{{img}}" class="art-img"/>
+        <image wx:if="{{img}}" src="{{img}}" class="art-img" bindtap="enlarge" />
         <view class="art-title">{{art.articleView.title}}</view>
         <view class="art-source">{{art.image_source}}</view>
     </view>

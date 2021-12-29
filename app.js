@@ -33,7 +33,15 @@ App({
       {
         "name": "学习",
         "scale": 16,
-        "data": [{
+        "data": [
+          {
+            latitude: 22.90664,
+            longitude: 113.877731,
+            name: '学生活动中心',
+            address: '位于第三食堂附近',
+            image:'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp6rW4icKoAfU0Z966fJLEuflLejzGSEEa1sGfTFXGiaiborZjKrVyzT4GnlqBLkk0nDCmJ5Mj2uurkQ/0?wx_fmt=jpeg'
+          },
+          {
             latitude: 22.9002,
             longitude: 113.876225,
             name: '松山湖图书馆',
@@ -127,7 +135,8 @@ App({
       {
         "scale": 16,
         "name": "运动",
-        "data": [{
+        "data": [
+          {
             latitude: 22.906021,
             longitude: 113.87283,
             name: '松山湖体育馆',
@@ -142,8 +151,8 @@ App({
             image:'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGBOzbOzE0ANYcNLPAKicpzd5f7JBLz12ScDZ3jGNaLVZdicxw382eXdhgw/0?wx_fmt=jpeg'
           },
           {
-            latitude: 22.906021,
-            longitude: 113.87283,
+            latitude: 22.906696,
+            longitude: 113.872782,
             name: '乒乓球室',
             address: '东莞理工学院体育馆侧门',
             image:'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGBoSIkNjb2Yicdps12VPowJeISahBBQjfQhDDtuibExf4qPVLkpDBEIpxw/0?wx_fmt=jpeg'

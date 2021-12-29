@@ -9,8 +9,8 @@ const _ = db.command
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  console.log(event)
   try {
+    const {OPENID} = cloud.getWXContext();
     //判断传递过来的数据类型，然后使用eval()进行字符串转对象
     if (typeof event.data == 'string') {
       event.data = eval('(' + event.data + ')')
@@ -19,7 +19,8 @@ exports.main = async (event, context) => {
     return await lights.doc(event.doc).update({
       data: {
         //扩展运算符，进行浅拷贝
-        ...event.data
+        ...event.data,//like_nums : _.inc(-1)
+        
       },
     })
   } catch (e) {

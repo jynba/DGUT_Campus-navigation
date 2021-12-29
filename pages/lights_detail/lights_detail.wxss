@@ -1,11 +1,19 @@
+.images_box{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: white;
+}
 .swiper {
   margin-top: 30rpx;
-  height: 500rpx;
+  height: 700rpx;
   width: 100%;
 }
 .slide-image{
-  height: 500rpx;
-  width: 90%;
+  height: 600rpx;
+  width: 100%;
   border-radius: 20rpx;
 }
 .center {
@@ -26,6 +34,7 @@
   justify-content: center;
   font-size: 14px;
   color: #616466;
+  margin: 0 50rpx;
   padding-top: 10px;
   background-color: #FFF;
   line-height: 1.5;
@@ -38,7 +47,7 @@
   flex-direction: row;
   display: flex;
   white-space: nowrap;/*合并空白*/
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 .user{
   position: relative;
@@ -56,13 +65,25 @@
   font-size: 30rpx;
   color: #666;
 }
-.like{
-  position: relative;
-  margin-left: 10rpx;
-  top:2rpx;
+.sub{
   display: flex;
   flex-direction: row;
-  right: 20rpx;
+  justify-content: space-between;
+}
+.time{
+  position: relative;
+  top:2rpx;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 33rpx;
+  color: #666;
+}
+.like{
+  position: relative;
+  top:2rpx;
+  right: 30rpx;
+  display: flex;
+  flex-direction: row;
 }
 .like_icon{
   width: 38rpx;

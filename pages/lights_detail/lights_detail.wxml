@@ -1,3 +1,7 @@
+<view class="user_content">
+  <image class="user1_ava" src="{{avatarUrl}}"></image>
+  <text class="user_Name">{{nickName}}</text>
+</view>
 <view class="images_box" wx:if="{{imglist.length!=0}}">
   <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
     <block wx:for="{{imglist}}" wx:for-index="index">
@@ -9,18 +13,18 @@
     </block>
   </swiper>
 </view>
-<view class="user_content">
-  <image class="user1_ava" src="{{avatarUrl}}"></image>
-  <text class="user_Name">{{nickName}}</text>
-  <view class="like">
-    <view class='like_icon' wx:if="{{isFavorite}}">
-      <image data-favoriteid="{{_id}}" src="{{like}}" bindtap='islike'></image>
-    </view>
-    <view class='like_icon' wx:else="{{!isFavorite}}">
-      <image data-favoriteid="{{_id}}" src="{{unlike}}" bindtap='islike'></image>
-    </view>
-    <text class="like_nums">{{like_nums}}</text>
+<view class="sub">
+  <view class="time">{{createTime}}</view>
+<view class="like">
+  <view class='like_icon' wx:if="{{isFavorite}}">
+    <image data-favoriteid="{{_id}}" src="{{like}}" bindtap='islike'></image>
   </view>
+  <view class='like_icon' wx:else="{{!isFavorite}}">
+    <image data-favoriteid="{{_id}}" src="{{unlike}}" bindtap='islike'></image>
+  </view>
+  <text class="like_nums">{{like_nums}}</text>
 </view>
+</view>
+
 <view class="title"><text>{{name}}</text></view>
 <view class="content"><text>{{describe}}</text></view>

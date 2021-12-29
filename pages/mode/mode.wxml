@@ -14,7 +14,7 @@
   <input class='text' placeholder='输入纬度~' name='lon' value="{{value2}}"></input>
   <input class='text' placeholder='输入地点名称' name='name'></input>
   <view style="padding-top: 10rpx;height:auto;width: 100%;">
-    <textarea auto-focus="true" auto-height="true" name="address" style="width: 100%;" placeholder="有什么想要记录的呢？留下！" />
+    <textarea auto-focus="true" auto-height="true" name="address" style="width: 100%;" placeholder="有什么想要记录的呢？" />
   </view>
 
   <button class="back" bindtap="selectImage">

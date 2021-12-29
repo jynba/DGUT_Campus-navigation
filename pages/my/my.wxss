@@ -15,7 +15,7 @@
   position: relative;
 }
 .header .background {
-  top: -150rpx;
+  top: -130rpx;
   height: auto;
   left: -100rpx;
   width: 1000rpx;
@@ -50,7 +50,7 @@
   left: 80rpx;
   color: white;
   z-index: 10;
-  font-size: 56rpx;
+  font-size: 60rpx;
   font-weight: 700;
   height: 60rpx;
   line-height: 60rpx;

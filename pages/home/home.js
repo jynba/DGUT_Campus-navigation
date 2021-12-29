@@ -36,7 +36,15 @@ Page({
     modaladdress: null,
     hasshow:false,
   },
-  
+  enlarge: function (e) {
+    wx.previewImage({
+      urls: [this.data.modalimg], //需要预览的图片http链接列表，注意是数组
+      current: '', // 当前显示图片的http链接，默认是第一个
+      success: function (res) {},
+      fail: function (res) {},
+      complete: function (res) {},
+    })
+  },
   changeUpDown:function(e){
     this.setData({
       showUp:!this.data.showUp
@@ -54,45 +62,52 @@ Page({
   //点击按钮实现地图上对应的点
   diyplace: function () {
     var that = this;
-    var result = that.data.diydata;
-    // console.log(result);
-    var number = that.data.markers.length;
-    let markers = that.data.markers
-    markers.splice(1, number - 1)
-    that.setData({
-      markers: markers,
-      currentdatabase: result
-    })
-    for (var i = 0; i < result.length; i++) {
-      let lat = result[i].latitude;
-      let lon = result[i].longitude;
-      let name = result[i].name;
-      var index = "markers[" + (i + 1) + "]";
+    mylocation.get().then(res => {
+      console.log(res)
       that.setData({
-        [index]: {
-          id: i + 1,
-          latitude: lat,
-          longitude: lon,
-          iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png",
-          width: 30,
-          height: 30,
-          label: {
-            content: name,
-            color: '#FFFFFF',
-            bgColor: '#6495ED',
-            fontSize: 13,
-            anchorX: 10,
-            anchorY: -23,
-            borderRadius: 5,
-            borderWidth: 1,
-            borderColor: '#6495ED',
-            padding: 2,
-            //display: 'ALWAYS'
-          }
+        diydata :res.data
+      },res2=>{//先获取数据后再执行
+        var result = that.data.diydata;
+        // console.log(result);
+        var number = that.data.markers.length;
+        let markers = that.data.markers
+        markers.splice(1, number - 1)
+        that.setData({
+          markers: markers,
+          currentdatabase: result
+        })
+        for (var i = 0; i < result.length; i++) {
+          let lat = result[i].latitude;
+          let lon = result[i].longitude;
+          let name = result[i].name;
+          var index = "markers[" + (i + 1) + "]";
+          that.setData({
+            [index]: {
+              id: i + 1,
+              latitude: lat,
+              longitude: lon,
+              iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png",
+              width: 30,
+              height: 30,
+              label: {
+                content: name,
+                color: '#FFFFFF',
+                bgColor: '#6495ED',
+                fontSize: 13,
+                anchorX: 10,
+                anchorY: -23,
+                borderRadius: 5,
+                borderWidth: 1,
+                borderColor: '#6495ED',
+                padding: 2,
+                //display: 'ALWAYS'
+              }
+            }
+          })
+          this.showPoint();
         }
       })
-      this.showPoint();
-    }
+    })
   },
   studyplace: function () {
     var that = this;
@@ -578,12 +593,6 @@ Page({
       key: '6ATBZ-4F4C2-G7RU3-CUZE5-QVTFH-Y6FHU'
     });
     var that = this;
-    mylocation.get().then(res => {
-      console.log(res)
-      that.data.diydata = res.data
-      //拿到res=option.id后用setData渲染到界面
-    })
-    // console.log(that.data.diydata);
     var study = that.data.buildData[1].data;
     var eat = that.data.buildData[2].data;
     var run = that.data.buildData[3].data;
