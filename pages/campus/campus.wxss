@@ -1,6 +1,6 @@
 .background {
   width: 100%;
-  position: relative;
+  position: fixed;
   z-index: 999;
   background: #689bda;
   display: flex;
@@ -25,7 +25,7 @@
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 999;
+  z-index: 900;
   background-color: #f8f4f4;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
 .title-text{
   position: relative;
   display: flex;
-  margin-left: 70rpx;
+  margin-left: 35rpx;
 }
 .title-text .text {
   font-weight: bold;
@@ -50,9 +50,25 @@
   align-items: center;
   position: relative;
   right: 10px;
-  color: #666;
+  font-size: 30rpx;
+  color: #666666;
+  margin-top: 10rpx;
 }
 
+.after::after {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspyTiaxB34pR0akWH1m4mvicbS73MZPc7ey96F6XbbH5EAicxpIYebHc8iaOhOcYVUh2Gc2weMnIRyn0Q/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 3rpx;
+}
 
 .swiper {
   margin-top: 30rpx;
@@ -114,6 +130,9 @@
 .title-text .navigator-text {
   position: relative;
   padding-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 .navigator-left{
     width: 80%;
@@ -160,7 +179,7 @@
   flex: 1;
   font-weight: bold;
   width: 100%;
-  color:#666;
+  color:#666666;
   font-size: 40rpx;
 }
 

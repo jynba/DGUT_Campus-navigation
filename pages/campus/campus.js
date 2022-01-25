@@ -6,12 +6,12 @@ Page({
    */
   data: {
     list: [
-      {
-        id: 'view',
-        name: '校园资讯',
-        open: false,
-        pages: []
-      },
+      // {
+      //   id: 'view',
+      //   name: '校园资讯',
+      //   open: false,
+      //   pages: []
+      // },
       {
         id: 'contain',
         name: '学院要闻',
@@ -70,7 +70,7 @@ Page({
         var list = that.data.list;
         for(let i =0;i<res.data.data.content.length;i++){
           res.data.data.content[i].createTime=/\d{4}-\d{1,2}-\d{1,2}/g.exec(res.data.data.content[i].createTime)
-          list[1].pages = list[1].pages.concat(res.data.data.content[i])
+          list[0].pages = list[0].pages.concat(res.data.data.content[i])
         }
         // console.log(list)
         that.setData({

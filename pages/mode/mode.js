@@ -40,7 +40,7 @@ Page({
   },
   
   onLoad: function (options) {
-
+    this.getmyPlace();
   },
   getmyPlace: function () {
     var that = this;
@@ -95,20 +95,21 @@ Page({
       complete: function (res) {},
     })
   },
-  deletefunction:function(){
-    wx.cloud.callFunction({
-      name:"deletemap"
-    }).then(res=>{
-      console.log(res)
-      wx.showToast({
-        title: '删除成功',
-        icon:'success',
-        // success:res2=>{
-        //   console.log(res2)
-        // },
-      })
-    })
-  },
+  
+  // deletefunction:function(){
+  //   wx.cloud.callFunction({
+  //     name:"deletemap"
+  //   }).then(res=>{
+  //     console.log(res)
+  //     wx.showToast({
+  //       title: '删除成功',
+  //       icon:'success',
+  //       // success:res2=>{
+  //       //   console.log(res2)
+  //       // },
+  //     })
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

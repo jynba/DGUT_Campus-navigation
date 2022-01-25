@@ -1,12 +1,13 @@
-<view class="header">
+<!-- <view class="header">
   <view>
-    <!-- <text>{{PageCount}}</text> -->作品展示
+     <text>{{PageCount}}</text>
+     作品展示
   </view>
-  <view class="header_after" bindtap="submit">
+ <view class="header_after" bindtap="submit">
     上传作品
     <image class="header_afterimg" src="/image/tianjia.png"></image>
   </view>
-</view>
+</view> -->
 
 
 <view class="waterfall">
@@ -31,9 +32,14 @@
               </navigator>
 
               <view wx:if="{{productCon_l}}" class="user">
+                <view class="title">
+                  <text class="text_title">{{item.name}}</text>
+                </view>
                 <view class="user_content">
+                  <view class="user_info">
                   <image class="user1_ava" src="{{item.avatarUrl}}"></image>
                   <text class="user_Name">{{item.nickName}}</text>
+                </view>
                   <view class="like">
                     <view class='like_icon' wx:if="{{item.isFavorite}}">
                       <image data-favoriteid="{{item._id}}" src="{{like}}" bindtap='islike'></image>
@@ -41,7 +47,7 @@
                     <view class='like_icon' wx:else="{{!item.isFavorite}}">
                       <image data-favoriteid="{{item._id}}" src="{{unlike}}" bindtap='islike'></image>
                     </view>
-                    <text class="like_nums">{{item.like_nums}}</text>
+                    <text class="like_nums">{{item.like_users.length}}</text>
                   </view>
                 </view>
               </view>
@@ -54,11 +60,15 @@
               <navigator url="/pages/lights_detail/lights_detail?id={{item._id}}" open-type="navigate" hover-class='none'>
                 <image class="item-img" src="{{item.imglist[0]}}" mode="widthFix"></image>
               </navigator>
-
               <view wx:if="{{productCon_r}}" class="user">
+                <view class="title">
+                  <text class="text_title">{{item.name}}</text>
+                </view>
                 <view class="user_content">
+                <view class="user_info">
                   <image class="user1_ava" src="{{item.avatarUrl}}"></image>
                   <text class="user_Name">{{item.nickName}}</text>
+                </view>
                   <view class="like">
                     <view class='like_icon' wx:if="{{item.isFavorite}}">
                       <image data-favoriteid="{{item._id}}" src="{{like}}" bindtap='islike'></image>
@@ -66,7 +76,7 @@
                     <view class='like_icon' wx:else="{{!item.isFavorite}}">
                       <image data-favoriteid="{{item._id}}" src="{{unlike}}" bindtap='islike'></image>
                     </view>
-                    <text class="like_nums">{{item.like_nums}}</text>
+                    <text class="like_nums">{{item.like_users.length}}</text>
                   </view>
                 </view>
               </view>
@@ -76,4 +86,5 @@
       </view>
     </view>
   </scroll-view>
+  <image src='https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspyTiaxB34pR0akWH1m4mvicbA5eZ4s8fHLljfl1Gd5ZU4uicseuhmhZwNINqolP3yxialRfhRZ0m0LJA/0?wx_fmt=png' class='goTop' bindtap="submit"></image>
 </view>

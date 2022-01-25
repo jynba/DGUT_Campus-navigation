@@ -4,6 +4,8 @@
   </view>
   <view class="title"><text>DGUT</text></view>
 </view>
+<!-- 替代fixed位置 -->
+<view style='height:70px'></view>
 
 <view class="background_main">
   <view class="center">
@@ -20,7 +22,7 @@
   <view class="kind-list-item">
     <view class="title-text"bindtap="navTo">
       <text class="kind-list-text">校园风光</text>
-      <text class="after">more</text>
+      <text class="after">这风景独美</text>
     </view>
   </view>
   <block wx:for-items="{{list}}"  wx:key="id">

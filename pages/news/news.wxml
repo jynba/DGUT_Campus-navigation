@@ -1,4 +1,6 @@
 <view class="news-item-container">
+  
+  <image src='https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsqoeGYic2RuAl0hplsasAj6G4xq8Oic4oAaNJLXaicichAg5mEMgib13FeNAWT0GIrMSN7ib4iaQ5XIBQecQ/0?wx_fmt=png' class='goTop' hidden='{{!hiddentop}}' bindtap="goTop"></image>
 
   <scroll-view scroll-x="true" class="bg-white nav solid-bottom">
     <view class="flex text-center">
@@ -8,7 +10,7 @@
     </view>
   </scroll-view>
 
-  <block wx:for="{{list}}" wx:for-index="id">
+  <block wx:for="{{list}}" wx:key="id"wx:for-index="id">
     <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
     <navigator wx:else url="../news_detail/news_detail?id={{item.articleId}}">
       <view class="news-item">

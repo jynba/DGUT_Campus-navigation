@@ -9,6 +9,8 @@ Page({
     loading: false,
     plain: false,
     time:"",
+    scrollTop: 0,
+    hiddentop: false,
     navItems: [{
       name: '学院要闻',
       index: 1
@@ -29,8 +31,34 @@ Page({
     this.getPages('https://css.dgut.edu.cn/api/article/list/news?size=10');
   },
 
+/*
+  一键返回顶部按钮
+*/
+//监听页面滚动函数
+onPageScroll: function (e) {
+  if (e.scrollTop > 150) {
+    this.setData({
+      hiddentop: true
+    });
+  } else {
+    this.setData({
+      hiddentop: false
+    });
+  }
+},
+
+//回到顶部函数
+goTop: function (e) {  // 一键回到顶部
+  if (wx.pageScrollTo) {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  }
+},
+
   //异步函数加载分栏
   tabSelect: async function (e) {
+    console.log(e);
     let that = this;
     let tabCur = e.currentTarget.dataset.id
     switch (tabCur) {

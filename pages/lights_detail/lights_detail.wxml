@@ -1,13 +1,17 @@
 <view class="user_content">
-  <image class="user1_ava" src="{{avatarUrl}}"></image>
-  <text class="user_Name">{{nickName}}</text>
+  <view class="user">
+    <image class="user1_ava" src="{{avatarUrl}}"></image>
+    <text class="user_Name">{{nickName}}</text>
+  </view>
+  <view class="delete" hidden="{{!Candelete}}" bindtap="delete"><text class="delete_text">···</text> 
+  </view>
 </view>
 <view class="images_box" wx:if="{{imglist.length!=0}}">
   <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
-    <block wx:for="{{imglist}}" wx:for-index="index">
+    <block wx:for="{{imglist}}"wx:for-item="item" wx:key="item" wx:for-index="index">
       <swiper-item>
         <view class="center">
-          <image src="{{item}}" class="slide-image" mode="aspectFit" bindtap="enlarge" />
+          <image src="{{item}}"data-src="{{item}}" data-index="{{index}}" class="slide-image" mode="aspectFit" bindtap="enlarge" />
         </view>
       </swiper-item>
     </block>
@@ -15,15 +19,15 @@
 </view>
 <view class="sub">
   <view class="time">{{createTime}}</view>
-<view class="like">
-  <view class='like_icon' wx:if="{{isFavorite}}">
-    <image data-favoriteid="{{_id}}" src="{{like}}" bindtap='islike'></image>
+  <view class="like">
+    <view class='like_icon' wx:if="{{isFavorite}}">
+      <image data-favoriteid="{{_id}}" src="{{like}}" bindtap='islike'></image>
+    </view>
+    <view class='like_icon' wx:else="{{!isFavorite}}">
+      <image data-favoriteid="{{_id}}" src="{{unlike}}" bindtap='islike'></image>
+    </view>
+    <text class="like_nums">{{num}}</text>
   </view>
-  <view class='like_icon' wx:else="{{!isFavorite}}">
-    <image data-favoriteid="{{_id}}" src="{{unlike}}" bindtap='islike'></image>
-  </view>
-  <text class="like_nums">{{like_nums}}</text>
-</view>
 </view>
 
 <view class="title"><text>{{name}}</text></view>

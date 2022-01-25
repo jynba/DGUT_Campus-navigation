@@ -1,13 +1,5 @@
-.images_box{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  background-color: white;
-}
+
 .swiper {
-  margin-top: 30rpx;
   height: 700rpx;
   width: 100%;
 }
@@ -32,10 +24,12 @@
 }
 .content{
   justify-content: center;
+  text-indent:2em;
   font-size: 14px;
   color: #616466;
-  margin: 0 50rpx;
+  margin: 0 28rpx;
   padding-top: 10px;
+  padding-bottom: 50px;
   background-color: #FFF;
   line-height: 1.5;
 }
@@ -47,10 +41,11 @@
   flex-direction: row;
   display: flex;
   white-space: nowrap;/*合并空白*/
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 .user{
   position: relative;
+  left: 25rpx;
 }
 .user1_ava{
   margin-right: 5rpx;
@@ -65,6 +60,16 @@
   font-size: 30rpx;
   color: #666;
 }
+.delete{
+  position: relative;
+  right: 30rpx;
+  width: 55rpx;
+}
+.delete_text{
+  font-size: 20rpx;
+  color: rgb(124, 124, 124);
+  display: inline;
+}
 .sub{
   display: flex;
   flex-direction: row;
@@ -72,11 +77,12 @@
 }
 .time{
   position: relative;
+  left: 30rpx;
   top:2rpx;
   display: flex;
   justify-content: flex-start;
-  font-size: 33rpx;
-  color: #666;
+  font-size: 25rpx;
+  color: rgb(158, 155, 155);
 }
 .like{
   position: relative;

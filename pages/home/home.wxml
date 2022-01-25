@@ -7,7 +7,7 @@
 
 <view class=".ivestment-c {{showUp?'hideBox':'showBox'}}">
 
-  <view class="framework" >
+  <view class="framework">
     <view class='input-position'>
       <image src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDBtpulCvlfej9twl7B3U2M9p1GLUtnTgMicbQHSOMGcN2V5DXe8GggNg/0?wx_fmt=png" class='search-image'></image>
       <input class="input" placeholder="搜索 周边 地址" placeholder-style="color:#bdbdbd;" bindinput="inputplace" />
@@ -16,7 +16,7 @@
     </view>
   </view>
 
-  <view class="index_other" >
+  <view class="index_other">
     <view class="other_element" bindtap="studyplace">
       <image class="other_element_icon" src="https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDXqWdr7StxLibxGltW0EBv8iayOekiciaaiaNxgxYfScp3oPazU3FDR0mZuw/0?wx_fmt=png"></image>
       <view class="other_element_text">学习</view>
@@ -53,7 +53,8 @@
     </view>
   </view>
 </view>
-  <view class="top-swich" bindtap="changeUpDown" >
+<view class="top-swich">
+  <view bindtap="changeUpDown">
     <view class="top-swich-btn" wx:if="{{showUp}}">
       展开
     </view>
@@ -61,22 +62,17 @@
       收起
     </view>
   </view>
-
-
-<view class="maptype">
-  <map id="myMap" style="width:100%;height:1500rpx" 
-  markers="{{markers}}" data-markers="{{markers}}" 
-  subkey="CFUBZ-WXKLW-3PKRK-O6JJY-KMAY5-EJB5L" 
-  layer-style="4" scale="17" show-compass="true" enable-rotate="true" enable-building="true" bindmarkertap="onPointTap" 
-  bindlabeltap="onPointTap" 
-  latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"></map>
 </view>
 
+<view class="maptype">
+  <image src='https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrB85rFDsDr7nvljb5AgbruzqVlNgyLO73uOpyLQ5oyUfsgElcpWWgZiaJgZFCV7YCFoecBHm9mKrw/0?wx_fmt=png' class='deleteMarker_pos' hidden='{{!isINdiy}}' bindtap="deleteMarker"></image>
+  <map id="myMap" style="width:100%;height:1500rpx" markers="{{markers}}" data-markers="{{markers}}" subkey="CFUBZ-WXKLW-3PKRK-O6JJY-KMAY5-EJB5L" layer-style="4" scale="17" show-compass="true" enable-rotate="true" enable-building="true" bindmarkertap="onPointTap" bindlabeltap="onPointTap" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"></map>
+</view>
 
 <!--弹出框-->
 <modal class="model" hidden="{{hidden}}" confirm-text="确定" cancel-text="取消" bindconfirm="modalconfirm" bindcancel="modalcancel" title="前往此处" style="width:80%">
   <view class="model-img">
-    <image style="width:565rpx;height:300rpx" src="{{modalimg}}"  bindtap="enlarge"></image>
+    <image style="width:565rpx;height:300rpx" src="{{modalimg}}" bindtap="enlarge"></image>
   </view>
   <view class="model-name">{{modalname}}</view>
   <block wx:if="{{modaladdress}}">

@@ -7,9 +7,29 @@ Page({
   data: {
     art: {},
     img: "",
+    imglist:{}
+  },
+  onPageScroll: function (e) {
+    if (e.scrollTop > 150) {
+      this.setData({
+        hiddentop: true
+      });
+    } else {
+      this.setData({
+        hiddentop: false
+      });
+    }
+  },
+  
+  //回到顶部函数
+  goTop: function (e) {  // 一键回到顶部
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
   },
   enlarge: function (e) {
-    console.log(e)
     wx.previewImage({
       urls: [this.data.img], //需要预览的图片http链接列表，注意是数组
       current: '', // 当前显示图片的http链接，默认是第一个
@@ -33,22 +53,17 @@ Page({
           var body = res.data.data.articleContent;
           var hasimg = /<img.*?>/.test(body);
           if (hasimg) {
-            var img = body.match(/(http:|https:).*?\.(jpg|jpeg|gif|png)/);
+            var imgReg = /(http:|https:).*?\.(jpg|jpeg|gif|png)/gi;
+            var img = body.match(imgReg);
             that.setData({
-              img: img[0]
+              imglist : img
             })
           }
-          body = body.replace(/<p.*?>/g, '')
-            .replace(/<\/p>/g, '')
-            .replace(/<span.*?>/g, '')
-            .replace(/<\/span>/g, '')
-            .replace(/<img.*?>/g, '')
-            .replace(/<\/img>/g, '')
-            .replace(/<a.*?>/g, '')
-            .replace(/<\/a>/g, '')
-            .replace(/<br>/g, '')
-            .replace(/<br\/>/g, '')
-            .replace(/&nbsp;/g, '')
+          //将其转换为wxml标签，方便用rich-text渲染出来
+          body = body.replace(/<img/gi, '<img style="max-width:100%;height:auto;display:block" class="art-img" bindtap="enlarge" ')
+          
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
           res.data.data.articleContent = body;
           // str = body;
           // console.log(pattern.test(str));
@@ -56,6 +71,7 @@ Page({
           that.setData({
             art: res.data.data,
           })
+          console.log(that.data.art)
         }
 
       }

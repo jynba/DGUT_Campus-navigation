@@ -140,6 +140,17 @@
   color: #666;
   font-size: 30rpx;
 }
+.deleteMarker_pos{
+    height: 80rpx;
+    width: 80rpx;
+    position: absolute;
+    display: flex;
+    padding-top: 20rpx;
+    right: 30rpx;
+    border-radius: 50%;
+    z-index: 999;
+    background: none;
+}
 
 .active {
   border-bottom: solid white;

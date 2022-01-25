@@ -8,7 +8,7 @@
 }
 
 .waterfall {
-  padding: 0 35rpx;
+  padding: 10rpx 35rpx;
 }
 
 .header {
@@ -64,7 +64,7 @@
 	border-radius: 5000rpx;
 }
 .bg-blue {
-	background-color: rgb(125, 155, 253);
+	background-color: #689bda;
 	color: white;
 }
 
@@ -91,7 +91,7 @@
 .lights_item {
   display: inline-block;
   background:#fff;
-  margin-bottom: 60rpx;
+  margin-bottom: 35rpx;
   border-radius: 10rpx;
   width: 330rpx;
   position: relative;
@@ -101,34 +101,63 @@
   height: auto;
   border-radius:10rpx;
 }
+
+.title{
+  display: block;
+  flex-direction: row;
+  white-space: nowrap;/*合并空白*/
+  padding-bottom: 18rpx;
+  padding-left: 10rpx;
+  width: 310rpx;
+  white-space: pre-line;
+}
+
+.text_title{
+  display: block;
+  width: 310rpx; /* 必须定义宽度 */
+  color: rgb(37, 37, 37);
+  font-size: 30rpx;
+  white-space: pre-line;
+}
+
+.user_content{
+  padding-left: 10rpx;
+  flex-direction: row;
+  display: flex;
+  white-space: nowrap;/*合并空白*/
+  justify-content: space-between;
+}
+.user{
+  position: relative;
+}
+.user_info{
+  display: flex;
+  position: relative;
+  width: auto;
+
+}
+
 .user1_ava{
   width: 40rpx;
   height: 40rpx;
   border-radius: 100%;
 }
-
-.user_content{
-  flex-direction: row;
-  display: flex;
-  white-space: nowrap;/*合并空白*/
-}
-.user{
-  position: relative;
-}
-/* .user_ava{
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  overflow: hidden;
-} */
 .user_Name{
   margin-left: 10rpx;
   line-height: 40rpx;
   font-size: 22rpx;
   color: #666;
 }
+
+/* .user_ava{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  overflow: hidden;
+} */
+
 .like{
-  position: absolute;
+  position: relative;
   top:0;
   display: flex;
   flex-direction: row;
@@ -148,4 +177,14 @@
   display: inline;
   font-size: 35rpx;
   color: #666;
+}
+
+.goTop{
+  height: 110rpx;
+  width: 110rpx;
+  position: fixed;
+  bottom: 90rpx;
+  right: 35rpx;
+  border-radius: 50%;
+  z-index: 999;
 }

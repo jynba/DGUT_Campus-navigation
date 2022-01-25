@@ -2,29 +2,27 @@
 <form bindsubmit="onSubmit" class="form_pos" id="{{id}}">
   <view class="imgpos">
     <block wx:if="{{image}}">
-      <image mode="widthFix" src="{{image}}" class="imagesize" bindtap="enlarge"></image>
+      <image mode="aspectFit" src="{{image}}" class="imagesize" bindtap="enlarge"></image>
     </block>
   </view>
 
-  <button class='btn' id='btn' bindtap="getmyPlace">
+  <!-- <button class='btn' id='btn' bindtap="getmyPlace">
     <text>点击获取当前坐标经纬度</text>
-  </button>
+  </button> -->
 
   <input class='text' placeholder='输入经度~' name='lat' value="{{value1}}"></input>
   <input class='text' placeholder='输入纬度~' name='lon' value="{{value2}}"></input>
   <input class='text' placeholder='输入地点名称' name='name'></input>
-  <view style="padding-top: 10rpx;height:auto;width: 100%;">
+  <view style="padding-bottom: 20rpx;min-height: 120px;height: auto !important;width: 100%;">
     <textarea auto-focus="true" auto-height="true" name="address" style="width: 100%;" placeholder="有什么想要记录的呢？" />
   </view>
-
-  <button class="back" bindtap="selectImage">
-    <text>上传图片</text>
+  <button class = "button_s" bindtap="selectImage">
+    <text class="text1">上传图片</text>
   </button>
-
-  <button form-type="submit" class="bottomBtn">
-    <text>上传并生成maker</text>
+  <button class = "button_s" form-type="submit" >
+    <text class="text2">生成标记点</text>
   </button>
-  <view class="bottomBtn">
+  <!-- <view class="bottomBtn">
   <view bindtap="deletefunction" hover-class="hover">清除所有自定义makers</view>
-</view>
+</view> -->
 </form>

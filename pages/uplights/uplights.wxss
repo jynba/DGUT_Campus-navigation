@@ -1,5 +1,21 @@
+.form_lights{
+  height: 1000rpx;
+  width:100%;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .title{
-  text-align: center;
+  padding-left: 50rpx;
+  text-align:start;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+  font-size: 42rpx;
+}
+.input_text{
+  font-size: 37rpx;
+  color: #666;
 }
 .IMG{
   width: 500rpx;
@@ -30,16 +46,40 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   background-color: white;
+  padding-top: 30rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
 }
 .img-box{
-  border: 5rpx;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.452);
   width: 200rpx;
   height: 200rpx;
-  margin-left: 35rpx;
-  margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  left: 40rpx;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  position: relative;
+}
+.line{
+  opacity: 0.5;
+  width: 90%;
+  height: 1px;
+  border-top: solid #babbbb 1px;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+}
+.addimg-box{
+  opacity: 0.8;
+  display:flex;
+  justify-content: center;
+  align-items:center; 
+  border: dashed;
+  border-color: rgb(161, 159, 159);
+  width: 195rpx;
+  height: 195rpx;
+  left: 40rpx;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
   position: relative;
 }
 .center {
@@ -53,14 +93,20 @@
 
 /* 删除图片 */
 .img-delete{
+  opacity: 0.5;
   width:50rpx;
   height:50rpx;
-  border-radius:50%;
   position:absolute;
-  right:-25rpx;
-  top:-25rpx;
+  border-bottom-left-radius: 30%;
+  right:0rpx;
+  top:0rpx;
+  background-color: rgb(102, 98, 98);
 }
 .img{
+  width: 100%;
+  height: 100%;
+}
+.img-upload{
   width: 100%;
   height: 100%;
 }
@@ -73,19 +119,51 @@
   display: flex;
   justify-content: flex-start;
 }
-.rmb{
-  width: 280rpx;
-  border: 2rpx solid rgb(199, 197, 197);
-}
 
 text{
   color: #666;
   font-family: Sans-serif;
 }
-button{
-  margin-right: 0rpx;
-  padding-left: 0%;
+
+.button_s{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+  height: 100rpx;
+  width: auto;
+  color: #fff;
+  border-radius: 50rpx;
+  background-color: #689bda;
+}
+.button_pos{
+  width: 100%;
+}
+.buttontext{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
 }
 .radio-group{
   display: flex;
+}
+.text1{
+  position: relative;
+  color: #fff;
+}
+.text1::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspyTiaxB34pR0akWH1m4mvicbTIzgeU8QdjaJvYraht7H6Orq24FXWT0IB4cH1KhV94d7ZIEybZLpgQ/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 4px;
+  width: 60rpx;
+  height: 60rpx;
 }

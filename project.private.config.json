@@ -65,6 +65,12 @@
           "pathName": "pages/help/help",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "try",
+          "pathName": "pages/lights_detail/lights_detail",
+          "query": "id=5b049cc861e5c359067423014ebbb326",
+          "scene": null
         }
       ]
     }

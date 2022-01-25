@@ -24,10 +24,10 @@ Page({
     allLights: [],
     avatarUrl: "",
     nickName: "",
-    like_nums: 0,
     hotItems: ["最近更新", "点赞最多", "我的作品"],
     hotCur: 0,
-    orderBy: "createTime"
+    orderBy: "createTime",
+    haschange: false,
   },
 
   hotSelect: async function (e) {
@@ -51,32 +51,49 @@ Page({
         break
       }
     }
+
+    //数据刷新
     that.setData({
       hotCur: hotCur,
       orderBy: orderBy,
       productCon_l: [],
       productCon_r: [],
-      allLights:[],
+      allLights: [],
     })
     that.pageData.skip = 0;
     that.data.showinfo = 6;
-    
-    if(!order){
-      await that.getData(res => {
+
+    //如果不是我的作品的话
+    if (!order) {
+      that.getData(res => {
         that.concatData(that.data.lights)
       }, that.data.orderBy);
-    }else{
+    }
+     else { //如果是我的作品的话，调用云函数
+      var openid = wx.getStorageSync('openid')
       wx.showLoading({
         title: '正在玩命加载中',
       })
       wx.cloud.callFunction({
         name: "Mylights"
       }).then(res => {
+    //渲染当前用户的所有点赞状态
+    for (let i = 0; i < res.result.data.length; i++) {
+      //查看是否点过赞
+      for (let n = 0; n < res.result.data[i].like_users.length; n++) {
+        if (openid === res.result.data[i].like_users[n]) {
+          res.result.data[i].isFavorite = true;
+          break;
+        } else {
+          res.result.data[i].isFavorite = false;
+        }
+      }
+    }
         that.setData({
           lights: [...that.data.lights, ...res.result.data],
           allLights: [...that.data.allLights, ...res.result.data],
-          isEndOfList:true
-        },res=>{
+          isEndOfList: true
+        }, res => {
           that.concatData(that.data.lights);
           wx.hideLoading()
         })
@@ -96,11 +113,25 @@ Page({
 
     // console.log(this.pageData.skip)
     var that = this;
-    mylights.orderBy(orderby, 'desc') //按创建时间的最新开始排列
+    var openid = wx.getStorageSync('openid')
+    mylights.orderBy(orderby, 'desc') //按创建时间的最新开始排列(降序)
       .skip(this.pageData.skip)
       .limit(that.data.showinfo)
       .get()
       .then(res => {
+        //渲染当前用户的所有点赞状态
+        for (let i = 0; i < res.data.length; i++) {
+          //查看是否点过赞
+          for (let n = 0; n < res.data[i].like_users.length; n++) {
+            if (openid === res.data[i].like_users[n]) {
+              res.data[i].isFavorite = true;
+              break;
+            } else {
+              res.data[i].isFavorite = false;
+            }
+          }
+        }
+//数据传到本地
         that.setData({
           allLights: [...that.data.allLights, ...res.data],
           lights: [...that.data.lights, ...res.data],
@@ -114,10 +145,11 @@ Page({
       })
   },
 
-  localData:function(){
+  localData: function () {
     var data = wx.getStorageSync('data');
 
   },
+
   pageData: {
     skip: 0,
   },
@@ -126,36 +158,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.cloud.callFunction({
-    //   name:"deletelights"
-    // }).then(res=>{
-    //   console.log(res)
-    //   wx.showToast({
-    //     title: '删除成功',
-    //     icon:'success',
-    //     // success:res2=>{
-    //     //   console.log(res2)
-    //     // },
-    //   })
-    // })
+    //识别当前进入的用户
+    //（若没在用户集合中，则添加到其中）从用户集合中获取当前用户的已点赞数据
+
+    //记录：从用户点赞集合中筛选当前记录出现的次数
+    //从已点赞数据中判断是否已经点过赞，渲染到记录上
+
+    //初始化每条记录的点赞数
 
     // var lights = this.data.lights.slice(0) //必须深拷贝
     this.getData(res => {
       this.concatData(this.data.lights)
     }, this.data.orderBy);
-    
+
   },
 
   onShow: function (e) {
-    // if (!this.data.hasonload) {
-    // console.log(this.data.lastdata)
-    // this.concatData(this.data.lastdata)
-    //全部放在uplights页面处理
+    //用于刷新页面
+    if (this.data.haschange) {
+      that.setData({
+        hotCur: hotCur,
+        orderBy: orderBy,
+        productCon_l: [],
+        productCon_r: [],
+        allLights: [],
+        haschange: false, //重新设置为false
+      })
+      that.pageData.skip = 0;
+      that.data.showinfo = 6;
+      this.getData(res => {
+        this.concatData(this.data.lights)
+      }, this.data.orderBy)
+    }
 
-    // var pages = getCurrentPages();
-    // var prevPage = pages[pages.length - 2]; //上一个页面
-    // //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
-    // console.log(prevPage)
   },
 
   concatData(data) {
@@ -166,7 +201,7 @@ Page({
     var timer = setTimeout(() => {
       let productCon = [];
       let mydata = data
-      productCon = data.shift()
+      productCon = data.shift()//从前抛出
       let left_h = 0;
       let right_h = 0;
       let productCon_l = this.data.productCon_l || [];
@@ -241,31 +276,33 @@ Page({
     var id = e.currentTarget.dataset.favoriteid;
     var productCon_l = that.data.productCon_l;
     var productCon_r = that.data.productCon_r;
+    var openid = wx.getStorageSync('openid')
     for (let j = 0; j < productCon_l.length; j++) {
       if (id == productCon_l[j]._id) {
         productCon_l[j].isFavorite = !productCon_l[j].isFavorite;
         if (productCon_l[j].isFavorite) {
-          productCon_l[j].like_nums++;
+          productCon_l[j].like_users.length++;
           //更新数据库
           wx.cloud.callFunction({
             name: 'click_like',
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(1)}",
-
+              data: "{like_nums : _.inc(1),like_users : _.addToSet(OPENID)}",
             }
           }).then((res) => {
             console.log(res)
           })
         } else {
-          productCon_l[j].like_nums--;
+          //当前
+          productCon_l[j].like_users.length--;
+          //更新数据库
           wx.cloud.callFunction({
             name: 'click_like',
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(-1)}",
+              data: "{like_nums : _.inc(-1),like_users : _.pop(OPENID)}",
             }
           }).then((res) => {
             console.log(res)
@@ -283,26 +320,26 @@ Page({
       if (id == productCon_r[j]._id) {
         productCon_r[j].isFavorite = !productCon_r[j].isFavorite;
         if (productCon_r[j].isFavorite) {
-          productCon_r[j].like_nums++;
+          productCon_r[j].like_users.length++;
           //更新数据库
           wx.cloud.callFunction({
             name: 'click_like',
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(1)}"
+              data: "{like_nums : _.inc(1),like_users : _.addToSet(OPENID)}"
             }
           }).then((res) => {
             console.log(res)
           })
         } else {
-          productCon_r[j].like_nums--;
+          productCon_r[j].like_users.length--;
           wx.cloud.callFunction({
             name: 'click_like',
             data: {
               doc: id,
               //向云函数传递字符串，在后端进行解析
-              data: "{like_nums : _.inc(-1)}"
+              data: "{like_nums : _.inc(-1),like_users : _.pop(OPENID)}"
             }
           }).then((res) => {
             console.log(res)

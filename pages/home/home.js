@@ -8,8 +8,8 @@ const mylocation = db.collection('location');
 Page({
 
   data: {
-    showUp:false,
-    hasonload:false,//免得初始时，onshow中又onload多一次
+    showUp: false,
+    hasonload: false, //免得初始时，onshow中又onload多一次
     task: {},
     buildData: app.globalData.map,
     hidden: true,
@@ -17,6 +17,7 @@ Page({
     markers: [],
     // 设置莞工的数据
     diydata: [],
+    diyid: [],
     studydata: [],
     eatdata: [],
     rundata: [],
@@ -34,7 +35,9 @@ Page({
     modalimg: null,
     modalname: null,
     modaladdress: null,
-    hasshow:false,
+    hasshow: false,
+    getid:false,
+    isINdiy:false,
   },
   enlarge: function (e) {
     wx.previewImage({
@@ -45,12 +48,23 @@ Page({
       complete: function (res) {},
     })
   },
-  changeUpDown:function(e){
+  changeUpDown: function (e) {
     this.setData({
-      showUp:!this.data.showUp
+      showUp: !this.data.showUp
     })
   },
-  
+  deleteMarker: function (e) {
+    var that = this
+    that.setData({//可调用获取id
+      getid :true 
+    })
+    wx.showToast({
+      title: "请选择你要删除的标记点",
+      icon: 'none',
+      duration: 2000
+    })
+  },
+
   //设置下拉刷新
   onPullDownRefresh: function () {
     var that = this;
@@ -65,13 +79,14 @@ Page({
     mylocation.get().then(res => {
       console.log(res)
       that.setData({
-        diydata :res.data
-      },res2=>{//先获取数据后再执行
+        diydata: res.data,
+        isINdiy:true
+      }, res2 => { //先获取数据后再执行
         var result = that.data.diydata;
         // console.log(result);
         var number = that.data.markers.length;
         let markers = that.data.markers
-        markers.splice(1, number - 1)
+        markers.splice(1, number - 1) //默认地点0为北门，因此从1开始切片
         that.setData({
           markers: markers,
           currentdatabase: result
@@ -83,6 +98,7 @@ Page({
           var index = "markers[" + (i + 1) + "]";
           that.setData({
             [index]: {
+              _id: result[i]._id,
               id: i + 1,
               latitude: lat,
               longitude: lon,
@@ -116,8 +132,9 @@ Page({
     let markers = that.data.markers
     markers.splice(1, number - 1)
     that.setData({
-      markers: markers,
-      currentdatabase: result
+      markers: markers, //刷新makers
+      currentdatabase: result,
+      isINdiy:false
     })
 
     for (var i = 0; i < result.length; i++) {
@@ -159,7 +176,8 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -200,7 +218,8 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -241,7 +260,8 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -282,7 +302,9 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
+      
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -323,7 +345,8 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -364,7 +387,8 @@ Page({
     markers.splice(1, number - 1)
     that.setData({
       markers: markers,
-      currentdatabase: result
+      currentdatabase: result,
+      isINdiy:false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -411,7 +435,7 @@ Page({
     // 调用接口
     qqmapsdk.search({
       keyword: text, //搜索关键词
-      rectangle:'22.894908,113.868604,22.910489,113.880713',//限制矩形范围（左下右上）
+      rectangle: '22.894908,113.868604,22.910489,113.880713', //限制矩形范围（左下右上）
       location: '22.902684,113.875159', //设置周边搜索中心点
       success: function (res) { //搜索成功后的回调
         console.log(res)
@@ -471,7 +495,7 @@ Page({
         // console.log(res);
       }
     });
-//显示附近
+    //显示附近
     // qqmapsdk.reverseGeocoder({
     //   location: '22.902684,113.875159',
     //   get_poi: 1,
@@ -492,17 +516,60 @@ Page({
   },
   //点击地点进行路径规划
   onPointTap: function (e) {
-    // console.log(e)
+    console.log(e)
     var that = this;
+    if(that.data.getid){  //删除坐标
+      var markerId = e.detail.markerId
+      var markers = that.data.markers
+      that.setData({
+        getid : false,//一次删除一个
+      })
+      for (let i = 0; i < markers.length; i++) {
+        if (markers[i].id === markerId) {
+          console.log(markers[i]._id);
+          if (markers[i]._id === undefined){
+            console.log("找到的是写死的markers"+markers[i].id);
+            break; //找到的是写死的markers
+          } 
+          console.log("到这了"+markers[i]);
+          //弹窗
+          wx.showActionSheet({
+            itemList: ['删除'],
+            success(res) {
+              if (res.tapIndex === 0) {
+                mylocation.doc(markers[i]._id).remove().then(res => {
+                  wx.showToast({
+                    title: '删除成功',
+                    icon: 'success',
+                    duration: 1000,
+                    success: res2 => {
+                      console.log(res2);
+                      that.diyplace()//重新刷新
+                    },
+                  })
+                })
+              }
+            },
+            fail(res) {}
+          })
+        }
+      }
+    }
+
+    else{
     var lat = ''; // 获取点击的markers经纬度
     var lon = ''; // 获取点击的markers经纬度
     var name = ''; // 获取点击的markers名称
     var markerId = e.detail.markerId; // 获取点击的markers  id
+    
+    that.setData({
+      markerid : e.detail.markerId,//方便外部获取
+    })
     var markersda = this.data.markers;
     var currentdatabase = this.data.currentdatabase;
     //定位所点击的坐标点
     for (var item of markersda) {
-     //遍历判断id匹配当前点击的id，获取信息
+      //遍历判断id匹配当前点击的id，获取信息
       if (item.id === markerId) {
         lat = item.latitude;
         lon = item.longitude;
@@ -522,7 +589,7 @@ Page({
       'longitude': lon
     });
 
-    if (currentdatabase[markerId - 1].name != null) {//markerid由1开始，因此-1；点击后显示弹出框
+    if (currentdatabase[markerId - 1].name != null) { //markerid由1开始，因此-1；点击后显示弹出框
       that.setData({
         hidden: false,
         modalname: currentdatabase[markerId - 1].name,
@@ -540,7 +607,8 @@ Page({
         endPoint: endPoint
       })
     }
-  },
+  }
+},
   // 路径规划
   // test: function () {
   //   //let plugin = requirePlugin('routePlan');
@@ -601,7 +669,7 @@ Page({
     var admi = that.data.buildData[6].data;
     var ador = that.data.buildData[7].data;
     that.setData({
-      hasonload:true,
+      hasonload: true,
       eatdata: eat,
       studydata: study,
       rundata: run,
@@ -638,7 +706,7 @@ Page({
               }
             }]
           })
-        } else if(!that.data.hasshow){  //若不在校区，则设置默认地点为北门
+        } else if (!that.data.hasshow) { //若不在校区，则设置默认地点为北门
           wx.showModal({
             title: '提示',
             content: '当前位置不在校区内，是否切换？',
@@ -695,28 +763,28 @@ Page({
   },
   onShow: function () {
     var that = this;
-    if(!that.data.hasonload){
+    if (!that.data.hasonload) {
       this.onLoad();
     }
-    this.data.hasonload=false;
+    this.data.hasonload = false;
   },
   onShareAppMessage: function (res) {
-		return {
-		  title: '莞工地图',
-		  path: 'pages/home/home', // 显示的页面
-		  imageUrl: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
-		  success: function (res) {
-			console.log(res)
-		  },
-		  fail: function (res) {
-			console.log(res);
-		  }
-		}
-	// }
-	},
+    return {
+      title: '莞工地图',
+      path: 'pages/home/home', // 显示的页面
+      imageUrl: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function (res) {
+        console.log(res);
+      }
+    }
+    // }
+  },
   onReady: function (e) {
     // 使用 wx.createMapContext 获取 map 上下文
-    this.mapCtx = wx.createMapContext('myMap',this);
+    this.mapCtx = wx.createMapContext('myMap', this);
   },
 
   // 设置点聚合
@@ -738,12 +806,12 @@ Page({
       fullscreen: !this.data.fullscreen
     })
   },
-   /**
+  /**
    * 获取保存map显示区域中心的坐标
    */
-  getMapLoaction(){
+  getMapLoaction() {
     this.mapCtx.getCenterLocation({
-      success: res=>{
+      success: res => {
         let location = {
           lat: res.latitude,
           lng: res.longitude
@@ -751,33 +819,35 @@ Page({
         this.setData({
           location: location
         })
-        console.log(location,'MAP');
+        console.log(location, 'MAP');
       }
     })
   },
 
-  showCurPos(){
-    if(!this.mapCtx) return;
+  showCurPos() {
+    if (!this.mapCtx) return;
     // 地图移动回当前位置
     this.mapCtx.moveToLocation({
-      success:res=>{
+      success: res => {
         // 防止重复触发
         clearTimeout(this.data.mapT);
         // 获取当前位置的经纬度
         this.setData({
-          mapT: setTimeout(()=>{this.getMapLoaction()},500)
+          mapT: setTimeout(() => {
+            this.getMapLoaction()
+          }, 500)
         });
       }
     });
   },
-  showPoint(){
-    if(!this.mapCtx) return;
+  showPoint() {
+    if (!this.mapCtx) return;
     //包含所有坐标点
     let includePointsData = []
     for (let i = 0; i < this.data.markers.length; i++) {
       includePointsData.push({
         latitude: this.data.markers[i].latitude,
-        longitude:this.data.markers[i].longitude
+        longitude: this.data.markers[i].longitude
       })
     }
     this.mapCtx.includePoints({
@@ -786,9 +856,11 @@ Page({
     })
   },
   modalcancel: function (e) {
+
     this.setData({
       hidden: true,
     })
+
   },
   modalconfirm: function (e) {
     var that = this;

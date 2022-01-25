@@ -14,6 +14,21 @@
 .flex-sub {
 	width: calc(100% - 96rpx - 60rpx - 20rpx);
 }
+
+/*
+返回顶部按钮
+*/
+.goTop{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 80rpx;
+  background: rgba(83, 83, 83, 0.3);
+  right: 30rpx;
+  border-radius: 50%;
+  z-index: 999;
+}
+
 /*
 导航栏
 */
@@ -61,13 +76,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 8px;
-  padding-top: 8px;
-  padding-right: 8px;
-  padding-bottom: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-top: 8px;
+  padding: 8px 8px;
+  margin: 8px 8px;
+  width: 86%;
   background-color: #fff;
   border: 1px solid #eaeaea;
   border-bottom: 1px solid #d0d0d0;

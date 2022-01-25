@@ -9,6 +9,10 @@
   z-index: 999;
   background: #689bda;
 }
+input{
+  padding-top: 20rpx;
+  padding-bottom: 10rpx;
+}
 .title_text {
   width: 100%;
   top: 1em;
@@ -18,20 +22,13 @@
   position: absolute;
   font-size: 34rpx;
 }
-
-text{
-  color: #666;
-  font-family: Sans-serif;
+input{
+  padding-top: 10rpx;
 }
-button{
-  margin-right: 0rpx;
-  padding-left: 0%;
+textarea{
+  padding-top: 10rpx;
 }
 
-
-.bottomBtn{
-  position: relative;
-}
 .form_pos{
   position: absolute;
   display: flex;
@@ -43,33 +40,64 @@ button{
   width: 100%;
   box-sizing: border-box;
 }
-.bottomBtn > view{
-  margin: 20rpx 0;
-  height: 75rpx;
-  line-height: 75rpx;
-  font-size: 30rpx;
-  font-weight: bold;
-  letter-spacing: 10rpx;
-  color: #666;
-  border-radius: 20rpx;
-  background: rgba(245,245,255,.3);
-  border: 2rpx solid rgba(205,205,215,.5);
-  box-sizing: border-box;
-}
-.bottomBtn > view.hover{
-  transform: scale(.9);
-}
-.bottomBtn > view:not(:last-of-type){
-  margin-bottom: 25rpx;
-}
+
 .imgpos{
   align-items: center;
   justify-content: center;
 }
 .imagesize{
-  height: 500rpx;
+  height: 400rpx;
   width: 500rpx;
 }
-.back{
-  margin: 30rpx 0;
+.button_s{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+  height: 100rpx;
+  width: auto;
+  color: #fff;
+  border-radius: 50rpx;
+  background-color: #689bda;
+}
+.text1{
+  width: auto;
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+.text2{
+  line-height: 100rpx;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
+.text1::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspyTiaxB34pR0akWH1m4mvicby352qMzyvkxrCUT90vzibAIRI0icOOmPUiaFT7QX3Mj73JHoyrMUHBCiaQ/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 4px;
+  width: 60rpx;
+  height: 60rpx;
+}
+.text2::before {
+  /* content: 'before'; */
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  background-image: url('https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXspyTiaxB34pR0akWH1m4mvicbBooqcgnzzrZlJ1p7VubKGiazmYA1Xk6IsmIhbpRhWqJlJGhPnfdjdHQ/0?wx_fmt=png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 4px;
+  width: 60rpx;
+  height: 60rpx;
 }
