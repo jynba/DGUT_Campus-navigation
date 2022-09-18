@@ -1,0 +1,3 @@
+<!--pages/showloa/showloa.wxml-->
+<text>pages/showloa/showloa.wxml</text>
+<button type="primary" bindtap="onExif">get exif data</button>

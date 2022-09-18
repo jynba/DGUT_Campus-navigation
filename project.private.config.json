@@ -71,6 +71,12 @@
           "pathName": "pages/lights_detail/lights_detail",
           "query": "id=5b049cc861e5c359067423014ebbb326",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/showloa/showloa",
+          "query": "",
+          "scene": null
         }
       ]
     }

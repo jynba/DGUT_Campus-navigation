@@ -516,7 +516,6 @@ Page({
   },
   //点击地点进行路径规划
   onPointTap: function (e) {
-    console.log(e)
     var that = this;
     if(that.data.getid){  //删除坐标
       var markerId = e.detail.markerId
@@ -531,7 +530,6 @@ Page({
             console.log("找到的是写死的markers"+markers[i].id);
             break; //找到的是写死的markers
           } 
-          console.log("到这了"+markers[i]);
           //弹窗
           wx.showActionSheet({
             itemList: ['删除'],
@@ -772,7 +770,6 @@ Page({
     return {
       title: '莞工地图',
       path: 'pages/home/home', // 显示的页面
-      imageUrl: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
       success: function (res) {
         console.log(res)
       },

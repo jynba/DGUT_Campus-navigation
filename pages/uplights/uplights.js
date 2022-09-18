@@ -22,7 +22,16 @@ Page({
   },
 
   onLoad: function () {
-    var userInfo = wx.getStorageSync('userInfo')
+    var userInfo = wx.getStorageSync('userInfo');
+    if(userInfo.length == 0)
+    {
+      wx.getUserProfile({
+        desc: '用于小程序的登录功能',
+        success: res=>{
+          wx.setStorageSync('userInfo', res)
+        }
+      })
+    }
     this.setData({
       userInfo: userInfo,
       nickName: userInfo.nickName,

@@ -10,7 +10,9 @@
 <image src='https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsqoeGYic2RuAl0hplsasAj6G4xq8Oic4oAaNJLXaicichAg5mEMgib13FeNAWT0GIrMSN7ib4iaQ5XIBQecQ/0?wx_fmt=png' class='goTop' hidden='{{!hiddentop}}' bindtap="goTop"></image>
 
 <view class="container1">
-    <view class="art-title">{{art.articleView.title}}</view>
+    <view class="art-title">
+      <rich-text nodes=" {{art.articleView}}"></rich-text> 
+    </view>
     <view class="art-content">
       <rich-text nodes=" {{art.articleContent}}"></rich-text>  
     </view> 

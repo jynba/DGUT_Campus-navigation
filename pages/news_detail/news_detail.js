@@ -7,7 +7,7 @@ Page({
   data: {
     art: {},
     img: "",
-    imglist:{}
+    imglist: {}
   },
   onPageScroll: function (e) {
     if (e.scrollTop > 150) {
@@ -20,9 +20,9 @@ Page({
       });
     }
   },
-  
+
   //回到顶部函数
-  goTop: function (e) {  // 一键回到顶部
+  goTop: function (e) { // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
         scrollTop: 0
@@ -42,36 +42,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // console.log(options)
     var that = this;
     wx.request({
-      url: 'https://css.dgut.edu.cn/api/article/' + options.id,
+      url: 'https://css.dgut.edu.cn/' + options.id,
       headers: {
         'Content-Type': 'application/json'
       },
       success(res) {
-        if (res.data.data!=null) {
-          var body = res.data.data.articleContent;
-          var hasimg = /<img.*?>/.test(body);
-          if (hasimg) {
-            var imgReg = /(http:|https:).*?\.(jpg|jpeg|gif|png)/gi;
-            var img = body.match(imgReg);
-            that.setData({
-              imglist : img
-            })
+        // console.log(res.data);
+        var title = res.data.match(/<div class="cms-article-title">([\s\S]+?)<\/div>/g);
+        console.log(title);
+        var body = res.data.match(/<div id="article".*?>([\s\S]+?)<\/form>/g)[0];
+        if (body != null) {
+          // var hasimg = /<img.*?>/.test(body);
+          // if (hasimg) {
+          // var imgReg = /(http:|https:).*?\.(jpg|jpeg|gif|png)/gi;
+          var link = body.match(/<img.*src="([^"]*)/ig);
+          console.log(link);
+          if (link) {
+            for (let i = 0; i < link.length; i++) {
+              var patt = /<img.*src="([^"]*)"/.exec(link[i])[1];
+              var li = 'https://css.dgut.edu.cn' + patt;
+              body = body.replace(/<img.*?[^enlarge]">/i, '<img src="' + li + '" style="max-width:100%;height:auto;display:block" class="art-img" bindtap="enlarge">')
+            }
           }
           //将其转换为wxml标签，方便用rich-text渲染出来
-          body = body.replace(/<img/gi, '<img style="max-width:100%;height:auto;display:block" class="art-img" bindtap="enlarge" ')
-          
-            .replace(/&lt;/g, '<')
+          body = body.replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
-          res.data.data.articleContent = body;
+            .replace(/<script>+.*/, '')
+            .replace(/<script>+.*/, '')
+          var item = {
+            articleContent: body,
+            articleView: title,
+          }
+          res.data = item;
           // str = body;
           // console.log(pattern.test(str));
-          // console.log(res.data.data)
           that.setData({
-            art: res.data.data,
+            art: res.data,
           })
-          console.log(that.data.art)
         }
 
       }

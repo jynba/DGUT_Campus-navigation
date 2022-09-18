@@ -20,12 +20,12 @@
     </swiper>
   </view>
   <view class="kind-list-item">
-    <view class="title-text"bindtap="navTo">
+    <view class="title-text" bindtap="navTo">
       <text class="kind-list-text">校园风光</text>
       <text class="after">这风景独美</text>
     </view>
   </view>
-  <block wx:for-items="{{list}}"  wx:key="id">
+  <block wx:for-items="{{list}}" wx:key="id">
     <view class="kind-list-item" bindtap="nav">
       <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}">
         <!-- bindtap="kindToggle" -->
@@ -35,11 +35,12 @@
       </view>
       <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
         <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-          <block wx:for-items="{{item.pages}}" wx:for-item="page"  wx:key="key">
+          <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="key">
             <view class="navigator">
-            <view class="navigator-left">
-              <view class="navigator-text">{{page.title}}</view></view>
-              <view class="navigator-time">{{page.createTime}}</view>
+              <view class="navigator-left">
+                <view class="navigator-text">{{page.art}}</view>
+              </view>
+              <view class="navigator-time">{{page.time}}</view>
               <!-- <view class="navigator-arrow"></view> -->
             </view>
           </block>

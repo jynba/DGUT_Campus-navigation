@@ -7,6 +7,8 @@ Page({
       "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDgQdvrIsHTaVD414IBPFPibDX6PG3lqYo4p097wp6dLLEnStQT1S5SdA/0?wx_fmt=png",
       "https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDuzCGPHQSqlRibUYeicNYDLB4lPVwnuL2HJz2nyoJqicd4y19IByFGl8Ww/0?wx_fmt=jpeg"
     ],
+    name : "",
+    picture:""
   },
   clickImg: function(e){
     wx.previewImage({
@@ -23,8 +25,22 @@ Page({
     })
   },
   onLoad: function () {
-    
+    var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo);
+    if(!userInfo)
+    {
+      wx.getUserProfile({
+        desc: '用于小程序的登录功能',
+        success: res=>{
+          wx.setStorageSync('userInfo', res)
+        }
+      })
+    }
     var that = this;
+    that.setData({
+      name:userInfo.nickName,
+      picture:userInfo.avatarUrl
+    })
     const now = new Date();
     var today = utils.formatTime(now) //若要增加，可先去掉-，变为number，++后再变回
     console.log(today)
@@ -49,7 +65,7 @@ Page({
     return {
       title: '莞工地图',
       path: 'pages/home/home', // 显示的页面
-      imageUrl: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
+      // imageUrl: "https://img1.027art.cn/img/2020/03/1583870337801574.jpg",
       success: function (res) {
         console.log(res)
       },

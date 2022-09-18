@@ -62,17 +62,31 @@ Page({
   onLoad() {
     let that = this
     wx.request({
-      url: 'https://css.dgut.edu.cn/api/article/list/news?size=5',
+      url: 'https://css.dgut.edu.cn/',
       headers: {
         'Content-Type': 'application/json'
       },
       success(res) {
+        // console.log(res.data)
+        var body = res.data.match(/<div class="el-tabs__content">([\s\S]+?)<script>/g)[0].replace(/<div.*?>/g, '')
+          .replace(/<\/div>/g, '')
+          .replace(/<span.*?>/g, '')
+          .replace(/<\/span.*?>/g, '')
+          .replace(/<script>/g, '')
+        var content = body.match(/<a.*?>([\s\S]+?)<\/a>/g)
+
+        // console.log(content);
         var list = that.data.list;
-        for(let i =0;i<res.data.data.content.length;i++){
-          res.data.data.content[i].createTime=/\d{4}-\d{1,2}-\d{1,2}/g.exec(res.data.data.content[i].createTime)
-          list[0].pages = list[0].pages.concat(res.data.data.content[i])
+        for (let i = 0; i < 6; i++) {
+          content[i] = content[i].match(/">([\s\S]+?)<\/a>/);
+          content[i].time = /\d{4}-\d{1,2}-\d{1,2}/.exec(body)[0];
+          var item = {
+            art: content[i][1],
+            time: content[i].time
+          }
+          list[0].pages = list[0].pages.concat(item);
         }
-        // console.log(list)
+        // console.log(list);
         that.setData({
           list: list
         })

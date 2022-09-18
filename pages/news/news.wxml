@@ -12,12 +12,12 @@
 
   <block wx:for="{{list}}" wx:key="id"wx:for-index="id">
     <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
-    <navigator wx:else url="../news_detail/news_detail?id={{item.articleId}}">
+    <navigator wx:else url="../news_detail/news_detail?id={{item.artID}}">
       <view class="news-item">
         <view class="news-item-left">
-          <text class="news-item-title">{{item.title}}</text>
+          <rich-text class="news-item-title">{{item.art}}</rich-text> 
         </view>
-        <view class="news-item-time">{{item.createTime}}</view>
+        <view class="news-item-time">{{item.time}}</view>
       </view>
     </navigator>
   </block>

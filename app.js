@@ -61,6 +61,13 @@ App({
             image: 'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGBDsOHUMsMHmw1wVNTrW4KfLvveh4uoZPIwhYXrE4fXJlBm82icsbbW7w/0?wx_fmt=jpeg'
           },
           {
+            latitude: 22.90114013671875,
+            longitude: 113.87882758246528,
+            name: '7栋教学楼',
+            address: '计算机学院内部',
+            image: 'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGB2EO0Bwt0SNNNfXU1lic5wHdM3w2wOVQjz6m6hH6C0Kia7nkFnUPQRtUw/0?wx_fmt=jpeg'
+          },
+          {
             latitude: 22.905803,
             longitude: 113.876963,
             name: '马克思主义学院',
@@ -146,6 +153,13 @@ App({
             name: '松山湖体育馆',
             address: '广东省东莞市北一路与西一路交叉口西北方向130米',
             image: 'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGBYgRbK003CjP10pSXziaoWGLVz771RLkKKlAicoIgC2skcDEVIVVqyo0g/0?wx_fmt=jpeg'
+          },
+          {
+            latitude: 22.905938,
+            longitude: 113.873283,
+            name: '篮球场',
+            address: '东莞理工学院篮球场',
+            image: ''
           },
           {
             latitude: 22.905313,
@@ -256,7 +270,7 @@ App({
             latitude: 22.898091,
             longitude: 113.873208,
             name: '学术会议中心',
-            address: '东莞理工学院学术会议中心',
+            address: '学术会议中心内含 学术报告厅、多功能厅',
             image: 'https://mmbiz.qpic.cn/mmbiz_jpg/ymce5HAJXsp52I8oCjZ6pVWa36CmuFGBEzwXQotb4fMc8TLgC3ZiagRq3AaxLZ2ctrprciaolXL00kFSdpmr7htQ/0?wx_fmt=jpeg'
           }
         ]

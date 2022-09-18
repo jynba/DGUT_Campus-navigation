@@ -1,0 +1,19 @@
+{
+  "name": "finalmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.weixin.qq.com/1239051474/map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "exif-js": "^2.3.0",
+    "exifreader": "^4.5.0"
+  }
+}

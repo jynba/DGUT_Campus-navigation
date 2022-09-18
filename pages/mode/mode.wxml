@@ -16,6 +16,7 @@
   <view style="padding-bottom: 20rpx;min-height: 120px;height: auto !important;width: 100%;">
     <textarea auto-focus="true" auto-height="true" name="address" style="width: 100%;" placeholder="有什么想要记录的呢？" />
   </view>
+
   <button class = "button_s" bindtap="selectImage">
     <text class="text1">上传图片</text>
   </button>

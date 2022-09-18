@@ -312,7 +312,7 @@ Page({
           productCon_l: productCon_l
         })
         let data = this.data;
-        wx.setStorageSync('data', data)
+        wx.setStorageSync('data', data)//将每次点赞都先保存在缓存
         break;
       }
     }

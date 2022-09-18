@@ -10,7 +10,8 @@
     "pages/lights_detail/lights_detail",
     "pages/uplights/uplights",
     "pages/news/news",
-    "pages/news_detail/news_detail"
+    "pages/news_detail/news_detail",
+    "pages/showloa/showloa"
   ],
   "window": {
     "navigationBarTextStyle": "black",
