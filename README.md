@@ -3,7 +3,7 @@
 详情见 https://jynba.github.io/blogs/miniprogram/map.html
 调用腾讯地图接口和插件
 
-![gh_23f543467c24_258](./images/gh_fd34d48c276b_258.jpg)
+![gh_23f543467c24_258](./image/gh_fd34d48c276b_258.jpg)
 
 
 ## **一、项目研究的目的与意义**
