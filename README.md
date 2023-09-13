@@ -5,7 +5,7 @@
 ## 项目成果
 **目前用户量为 995 人（2023/9/13）(无宣传的情况下有这么多已经很不错了 QAQ)**
 
-<br/><img src="https://github.com/jynba/DGUT_Campus-navigation/main/image/baf4f19d1cebe733de24786a3527d6f.png" width="700" height="400"/><br/>
+<br/><img src="https://github.com/jynba/DGUT_Campus-navigation/tree/main/image/baf4f19d1cebe733de24786a3527d6f.png" width="700" height="400"/><br/>
 
 ## 在线访问二维码
 ![gh_23f543467c24_258](https://github.com/jynba/DGUT_Campus-navigation/main/image/gh_fd34d48c276b_258.jpg)
