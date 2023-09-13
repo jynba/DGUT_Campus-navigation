@@ -1,10 +1,24 @@
 # DGUT_Campus-navigation
 莞工地图
-详情见 https://jynba.github.io/
+详情见 https://jyblog.stm32-mqtt.top/projects/ggdt_project/
 调用腾讯地图接口和插件
+## 项目成果
+**目前用户量为 995 人（2023/9/13）(无宣传的情况下有这么多已经很不错了 QAQ)**
+![res](./image/60aa525ba04d5331a101c17b9ca9026.jpg)
+
 
 ![gh_23f543467c24_258](./image/gh_fd34d48c276b_258.jpg)
 
+## 项目演示
+* 分类查看校内建筑物
+![2](./image/baf4f19d1cebe733de24786a3527d6f.png)
+  
+* 搜索功能：
+![3](./image/f65839e1bc58206ebf0f9f0fc3868dd.jpg)
+
+* 自定义坐标点
+![5](./image/06d6dfbb48f847eae61a4d7c19dbfba.jpg)
+![6](./image/8f78ac17d4e64752166445cab593254.jpg)
 
 ## **一、项目研究的目的与意义**
 
