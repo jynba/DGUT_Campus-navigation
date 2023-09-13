@@ -20,13 +20,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-    wx.cloud.callFunction({
-      name: 'getOpenid',
-      complete: res => {
-        // console.log('云函数获取到的openid: ', res.result.openid)
-        wx.setStorageSync('openid', res.result.openid)
-      }
-    })
+
   },
   globalData: {
     userInfo: {},

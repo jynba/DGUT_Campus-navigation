@@ -133,12 +133,19 @@
 
 .top-swich-btn {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-content: center;
   background-color: none;
   letter-spacing: 3rpx;
   height: 70rpx;
+  text-align: center;
   color: #666;
   font-size: 30rpx;
+}
+.close_open{
+  width: 200rpx;
+  line-height: 70rpx;
+  text-align: center;
 }
 .deleteMarker_pos{
     height: 80rpx;

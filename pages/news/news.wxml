@@ -10,7 +10,7 @@
     </view>
   </scroll-view>
 
-  <block wx:for="{{list}}" wx:key="id"wx:for-index="id">
+  <block wx:for="{{list}}" wx:key="artID">
     <text wx:if="{{item.header}}" class="sub-title">{{item.header}}</text>
     <navigator wx:else url="../news_detail/news_detail?id={{item.artID}}">
       <view class="news-item">

@@ -138,6 +138,7 @@
   left: 50rpx;
   display: flex;
   flex-direction: row;
+  margin-top: 20rpx;
 }
 
 .text1 {
@@ -271,8 +272,11 @@
   height: 25px;
 }
 
-button {
-  background-color:white;
-  width: fit-content;
-  height: auto;
+button{
+  /* justify-content: center; */
+  background:none;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  margin-left: 0%;
 }

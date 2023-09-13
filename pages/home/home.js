@@ -3,14 +3,13 @@ var QQMapWX = require('../../qqmap-wx-jssdk.js');
 var qqmapsdk;
 var app = getApp();
 const db = wx.cloud.database();
-const mylocation = db.collection('location');
+// const mylocation = db.collection('location');
 // pages/home/home.js
 Page({
 
   data: {
     showUp: false,
     hasonload: false, //免得初始时，onshow中又onload多一次
-    task: {},
     buildData: app.globalData.map,
     hidden: true,
     // 设置markers
@@ -36,8 +35,8 @@ Page({
     modalname: null,
     modaladdress: null,
     hasshow: false,
-    getid:false,
-    isINdiy:false,
+    getid: false,
+    isINdiy: false,
   },
   enlarge: function (e) {
     wx.previewImage({
@@ -55,8 +54,8 @@ Page({
   },
   deleteMarker: function (e) {
     var that = this
-    that.setData({//可调用获取id
-      getid :true 
+    that.setData({ //可调用获取id
+      getid: true
     })
     wx.showToast({
       title: "请选择你要删除的标记点",
@@ -76,11 +75,12 @@ Page({
   //点击按钮实现地图上对应的点
   diyplace: function () {
     var that = this;
-    mylocation.get().then(res => {
-      console.log(res)
+    const mylocation = wx.getStorageSync('mylocation')
+    console.log(mylocation);
+    if (mylocation) {
       that.setData({
-        diydata: res.data,
-        isINdiy:true
+        diydata: mylocation,
+        isINdiy: true
       }, res2 => { //先获取数据后再执行
         var result = that.data.diydata;
         // console.log(result);
@@ -99,7 +99,7 @@ Page({
           that.setData({
             [index]: {
               _id: result[i]._id,
-              id: i + 1,
+              id: +i + 1,
               latitude: lat,
               longitude: lon,
               iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png",
@@ -123,7 +123,55 @@ Page({
           this.showPoint();
         }
       })
-    })
+    }
+    // mylocation.get().then(res => {
+    //   console.log(res)
+    //   that.setData({
+    //     diydata: res.data,
+    //     isINdiy:true
+    //   }, res2 => { //先获取数据后再执行
+    //     var result = that.data.diydata;
+    //     // console.log(result);
+    //     var number = that.data.markers.length;
+    //     let markers = that.data.markers
+    //     markers.splice(1, number - 1) //默认地点0为北门，因此从1开始切片
+    //     that.setData({
+    //       markers: markers,
+    //       currentdatabase: result
+    //     })
+    //     for (var i = 0; i < result.length; i++) {
+    //       let lat = result[i].latitude;
+    //       let lon = result[i].longitude;
+    //       let name = result[i].name;
+    //       var index = "markers[" + (i + 1) + "]";
+    //       that.setData({
+    //         [index]: {
+    //           _id: result[i]._id,
+    //           id: i + 1,
+    //           latitude: lat,
+    //           longitude: lon,
+    //           iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrAqcgjc2PiaVgKdpvkGVcUDRm4vWOiaKqd1v63fbKjQd12WlyUicRPMCpFcODAwS7jCqGWkeratibvSg/0?wx_fmt=png",
+    //           width: 30,
+    //           height: 30,
+    //           label: {
+    //             content: name,
+    //             color: '#FFFFFF',
+    //             bgColor: '#6495ED',
+    //             fontSize: 13,
+    //             anchorX: 10,
+    //             anchorY: -23,
+    //             borderRadius: 5,
+    //             borderWidth: 1,
+    //             borderColor: '#6495ED',
+    //             padding: 2,
+    //             //display: 'ALWAYS'
+    //           }
+    //         }
+    //       })
+    //       this.showPoint();
+    //     }
+    //   })
+    // })
   },
   studyplace: function () {
     var that = this;
@@ -134,7 +182,7 @@ Page({
     that.setData({
       markers: markers, //刷新makers
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
 
     for (var i = 0; i < result.length; i++) {
@@ -177,7 +225,7 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -219,7 +267,7 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -228,7 +276,7 @@ Page({
       var index = "markers[" + (i + 1) + "]";
       that.setData({
         [index]: {
-          id: i + 1,
+          id: +i + 1,
           latitude: lat,
           longitude: lon,
           iconPath: "https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsoIu823w9hdgloSN74rC6jQpZbUtS4sQQic9DSVmwJwWfTiclRhcLTEcD4M9haCVIB531Qv057mzsHg/0?wx_fmt=png",
@@ -261,7 +309,7 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -303,8 +351,8 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
-      
+      isINdiy: false
+
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -346,7 +394,7 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -376,7 +424,28 @@ Page({
           }
         }
       })
-      this.showPoint();
+      try{
+        console.log(this.mapCtx);
+        if (!this.mapCtx) return;
+        //包含所有坐标点
+        let includePointsData = []
+        for (let i = 0; i < this.data.markers.length; i++) {
+          includePointsData.push({
+            latitude: this.data.markers[i].latitude,
+            longitude: this.data.markers[i].longitude
+          })
+        }
+        this.mapCtx.includePoints({
+          padding: [-130],
+          points: includePointsData
+        })
+      }
+      catch(e){
+        console.log(e);
+      }
+      finally{
+  
+      }
     }
   },
   dorplace: function () {
@@ -388,7 +457,7 @@ Page({
     that.setData({
       markers: markers,
       currentdatabase: result,
-      isINdiy:false
+      isINdiy: false
     })
     for (var i = 0; i < result.length; i++) {
       let lat = result[i].latitude;
@@ -517,96 +586,100 @@ Page({
   //点击地点进行路径规划
   onPointTap: function (e) {
     var that = this;
-    if(that.data.getid){  //删除坐标
+    if (that.data.getid) { //删除坐标
       var markerId = e.detail.markerId
+      // console.log(e.detail);
+      // console.log(markerId);
       var markers = that.data.markers
       that.setData({
-        getid : false,//一次删除一个
+        getid: false, //一次删除一个
       })
-      for (let i = 0; i < markers.length; i++) {
-        if (markers[i].id === markerId) {
-          console.log(markers[i]._id);
-          if (markers[i]._id === undefined){
-            console.log("找到的是写死的markers"+markers[i].id);
-            break; //找到的是写死的markers
-          } 
-          //弹窗
-          wx.showActionSheet({
-            itemList: ['删除'],
-            success(res) {
-              if (res.tapIndex === 0) {
-                mylocation.doc(markers[i]._id).remove().then(res => {
-                  wx.showToast({
-                    title: '删除成功',
-                    icon: 'success',
-                    duration: 1000,
-                    success: res2 => {
-                      console.log(res2);
-                      that.diyplace()//重新刷新
-                    },
-                  })
-                })
-              }
-            },
-            fail(res) {}
-          })
+      const mylocation = wx.getStorageSync('mylocation')
+      mylocation.splice(+markerId-1,1);
+      wx.setStorageSync('mylocation', mylocation)
+      // 省去for
+      wx.showActionSheet({
+        itemList: ['删除'],
+        success(res) {
+          if (res.tapIndex === 0) {
+            // mylocation.doc(markers[i]._id).remove().then(res => {
+            //   wx.showToast({
+            //     title: '删除成功',
+            //     icon: 'success',
+            //     duration: 1000,
+            //     success: res2 => {
+            //       console.log(res2);
+            //       that.diyplace()//重新刷新
+            //     },
+            //   })
+            // })
+            wx.showToast({
+              title: '删除成功',
+              icon: 'success',
+              duration: 1000,
+              success: res2 => {
+                console.log(res2);
+                that.diyplace() //重新刷新
+              },
+            })
+            console.log(markers);
+          }
+        },
+        fail(res) {}
+      })
+    } else {
+      var lat = ''; // 获取点击的markers经纬度
+      var lon = ''; // 获取点击的markers经纬度
+      var name = ''; // 获取点击的markers名称
+      var markerId = e.detail.markerId; // 获取点击的markers  id
+
+      that.setData({
+        markerid: e.detail.markerId, //方便外部获取
+      })
+      var markersda = this.data.markers;
+      var currentdatabase = this.data.currentdatabase;
+      //定位所点击的坐标点
+      for (var item of markersda) {
+        //遍历判断id匹配当前点击的id，获取信息
+        if (item.id === markerId) {
+          lat = item.latitude;
+          lon = item.longitude;
+          name = item.label.content;
+          break;
         }
       }
-    }
+      //初始化起点
+      var startPoint = JSON.stringify({
+        'name': markersda[0].callout.content,
+        'latitude': markersda[0].latitude,
+        'longitude': markersda[0].longitude
+      });
+      var endPoint = JSON.stringify({ //终点
+        'name': name,
+        'latitude': lat,
+        'longitude': lon
+      });
 
-    else{
-    var lat = ''; // 获取点击的markers经纬度
-    var lon = ''; // 获取点击的markers经纬度
-    var name = ''; // 获取点击的markers名称
-    var markerId = e.detail.markerId; // 获取点击的markers  id
-    
-    that.setData({
-      markerid : e.detail.markerId,//方便外部获取
-    })
-    var markersda = this.data.markers;
-    var currentdatabase = this.data.currentdatabase;
-    //定位所点击的坐标点
-    for (var item of markersda) {
-      //遍历判断id匹配当前点击的id，获取信息
-      if (item.id === markerId) {
-        lat = item.latitude;
-        lon = item.longitude;
-        name = item.label.content;
-        break;
+      if (currentdatabase[+markerId - 1].name != null) { //markerid由1开始，因此-1；点击后显示弹出框
+        that.setData({
+          hidden: false,
+          modalname: currentdatabase[markerId - 1].name,
+          modalimg: currentdatabase[markerId - 1].image,
+          modaladdress: currentdatabase[markerId - 1].address,
+          startPoint: startPoint,
+          endPoint: endPoint
+        })
+      } else if (currentdatabase[+markerId - 1].title != null) {
+        that.setData({
+          hidden: false,
+          modalname: currentdatabase[markerId - 1].title,
+          modaladdress: currentdatabase[markerId - 1].address,
+          startPoint: startPoint,
+          endPoint: endPoint
+        })
       }
     }
-    //初始化起点
-    var startPoint = JSON.stringify({
-      'name': markersda[0].callout.content,
-      'latitude': markersda[0].latitude,
-      'longitude': markersda[0].longitude
-    });
-    var endPoint = JSON.stringify({ //终点
-      'name': name,
-      'latitude': lat,
-      'longitude': lon
-    });
-
-    if (currentdatabase[markerId - 1].name != null) { //markerid由1开始，因此-1；点击后显示弹出框
-      that.setData({
-        hidden: false,
-        modalname: currentdatabase[markerId - 1].name,
-        modalimg: currentdatabase[markerId - 1].image,
-        modaladdress: currentdatabase[markerId - 1].address,
-        startPoint: startPoint,
-        endPoint: endPoint
-      })
-    } else if (currentdatabase[markerId - 1].title != null) {
-      that.setData({
-        hidden: false,
-        modalname: currentdatabase[markerId - 1].title,
-        modaladdress: currentdatabase[markerId - 1].address,
-        startPoint: startPoint,
-        endPoint: endPoint
-      })
-    }
-  }
-},
+  },
   // 路径规划
   // test: function () {
   //   //let plugin = requirePlugin('routePlan');
@@ -838,26 +911,32 @@ Page({
     });
   },
   showPoint() {
-    if (!this.mapCtx) return;
-    //包含所有坐标点
-    let includePointsData = []
-    for (let i = 0; i < this.data.markers.length; i++) {
-      includePointsData.push({
-        latitude: this.data.markers[i].latitude,
-        longitude: this.data.markers[i].longitude
+    try{
+      if (!this.mapCtx) return;
+      //包含所有坐标点
+      let includePointsData = []
+      for (let i = 0; i < this.data.markers.length; i++) {
+        includePointsData.push({
+          latitude: this.data.markers[i].latitude,
+          longitude: this.data.markers[i].longitude
+        })
+      }
+      this.mapCtx.includePoints({
+        padding: [90, 60, 150, 60],
+        points: includePointsData
       })
     }
-    this.mapCtx.includePoints({
-      padding: [100],
-      points: includePointsData
-    })
+    catch(e){
+      console.log(e);
+    }
+    finally{
+
+    }
   },
   modalcancel: function (e) {
-
     this.setData({
       hidden: true,
     })
-
   },
   modalconfirm: function (e) {
     var that = this;

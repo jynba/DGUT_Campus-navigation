@@ -1,84 +1,24 @@
 {
   "setting": {},
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
-          "name": "pages/about/about",
-          "pathName": "pages/about/about",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/campus/campus",
-          "pathName": "pages/campus/campus",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/my/my",
+          "name": "",
           "pathName": "pages/my/my",
           "query": "",
+          "launchMode": "default",
           "scene": null
         },
         {
-          "name": "pages/mode/mode",
-          "pathName": "pages/mode/mode",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/lights/lights",
+          "name": "",
           "pathName": "pages/lights/lights",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/uplights/uplights",
-          "pathName": "pages/uplights/uplights",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/news/news",
-          "pathName": "pages/news/news",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/help/help",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "try",
-          "pathName": "pages/lights_detail/lights_detail",
-          "query": "id=5b049cc861e5c359067423014ebbb326",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/showloa/showloa",
-          "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]
     }
-  }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
 }

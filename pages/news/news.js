@@ -117,6 +117,7 @@ goTop: function (e) {  // 一键回到顶部
             time: content[i].time,
             artID : link
           }
+          console.log(item);
           list = list.concat(item);
         }
         // console.log(list);

@@ -4,14 +4,9 @@
     "pages/campus/campus",
     "pages/my/my",
     "pages/mode/mode",
-    "pages/about/about",
     "pages/help/help",
-    "pages/lights/lights",
-    "pages/lights_detail/lights_detail",
-    "pages/uplights/uplights",
     "pages/news/news",
-    "pages/news_detail/news_detail",
-    "pages/showloa/showloa"
+    "pages/news_detail/news_detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -27,17 +22,17 @@
       "desc": "小程序将获取你当前所在的位置信息"
     }
   },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
   "plugins": {
     "routePlan": {
       "version": "1.0.18",
       "provider": "wx50b5593e81dd937a"
-      },
-    "subway": {
-      "version": "1.0.12",
-      "provider": "wx6aaf93c4435fa1c1"
-      },
+    },
     "chooseLocation": {
-      "version": "1.0.8",
+      "version": "1.0.9",
       "provider": "wx76a9a06e5b4e693e"
       }
   },
@@ -57,7 +52,7 @@
         "selectedIconPath": "/image/校园风光选中.png",
         "iconPath": "/image/校园风光.png",
         "pagePath": "pages/campus/campus",
-        "text": "校园风光"
+        "text": "校园资讯"
       },
       {
         "selectedIconPath": "/image/我的(3_).png",

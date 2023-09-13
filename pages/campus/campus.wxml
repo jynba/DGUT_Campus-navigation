@@ -1,51 +1,54 @@
-<view class='background' style='height:70px'>
-  <view>
-    <image src="/image/dgut.png" class='picture'></image>
+<view style='background-color: #f8f4f4;'>
+  <view class='background' style='height:72px'>
+    <view>
+      <image src="/image/dgut.png" class='picture'></image>
+    </view>
+    <view class="title"><text>DGUT</text></view>
   </view>
-  <view class="title"><text>DGUT</text></view>
-</view>
-<!-- 替代fixed位置 -->
-<view style='height:70px'></view>
+  <!-- 替代fixed位置 -->
+  <view style='height:95px'></view>
 
-<view class="background_main">
-  <view class="center">
-    <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
-      <block wx:for="{{lunbo}}" wx:key="url" wx:for-index="index">
-        <swiper-item>
-          <view class="center">
-            <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="kind-list-item">
+  <view class="background_main">
+    <view class="center">
+      <swiper class="swiper" autoplay="true" indicator-dots="true" indicator-active-color="#2e74ee" circular="true" interval="5000" duration="1000">
+        <block wx:for="{{lunbo}}" wx:key="url" wx:for-index="index">
+          <swiper-item>
+            <view class="center">
+              <image src="{{item.url}}" class="slide-image" mode="aspectFill" />
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- <view class="kind-list-item">
     <view class="title-text" bindtap="navTo">
       <text class="kind-list-text">校园风光</text>
       <text class="after">这风景独美</text>
     </view>
-  </view>
-  <block wx:for-items="{{list}}" wx:key="id">
-    <view class="kind-list-item" bindtap="nav">
-      <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}">
-        <!-- bindtap="kindToggle" -->
-        <view class="title-text">
-          <view class="kind-list-text">{{item.name}}</view>
+  </view> -->
+    <block wx:for-items="{{list}}" wx:key="id">
+      <view class="kind-list-item" bindtap="nav">
+        <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}">
+          <!-- bindtap="kindToggle" -->
+          <view class="title-text">
+            <view class="kind-list-text">{{item.name}}</view>
+          </view>
         </view>
-      </view>
-      <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
-        <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
-          <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="key">
-            <view class="navigator">
-              <view class="navigator-left">
-                <view class="navigator-text">{{page.art}}</view>
+        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+            <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="key">
+              <view class="navigator">
+                <view class="navigator-left">
+                  <view class="navigator-text">{{page.art}}</view>
+                </view>
+                <view class="navigator-time">{{page.time}}</view>
+                <!-- <view class="navigator-arrow"></view> -->
               </view>
-              <view class="navigator-time">{{page.time}}</view>
-              <!-- <view class="navigator-arrow"></view> -->
-            </view>
-          </block>
+            </block>
+          </view>
         </view>
       </view>
-    </view>
-  </block>
+    </block>
+  </view>
+
 </view>

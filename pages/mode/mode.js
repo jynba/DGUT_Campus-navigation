@@ -1,7 +1,7 @@
 // pages/mode/mode.js
 var app = getApp();
-const db=wx.cloud.database();
-const location=db.collection('location')
+// const db=wx.cloud.database();
+// const location=db.collection('location')
 Page({
 
   /**
@@ -10,35 +10,35 @@ Page({
   data: {
     value1: "",
     value2: "",
-    id:"",
-    task:{},
+    id: "",
+    task: {},
     image: null
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  selectImage:function(e){
-    wx.chooseImage({
-      count : 1,
-      sizeType :['compressed'],
-      sourceType:['album','camera'],
-      success:res=>{
-        console.log(res.tempFilePaths[0])
+  selectImage: function (e) {
+    wx.chooseMedia({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+        console.log(res.tempFiles[0].tempFilePath)
         wx.cloud.uploadFile({
-          cloudPath:`${Math.floor(Math.random()*1000000)}.jpg`,
+          cloudPath: `${Math.floor(Math.random()*1000000)}.jpg`,
           //~使得每次上传的图片名字不一样
-          filePath: res.tempFilePaths[0],
-        }).then(res=>{
+          filePath: res.tempFiles[0].tempFilePath,
+        }).then(res => {
           this.setData({
-            image:res.fileID
+            image: res.fileID
           })
-        }).catch(err=>{
+        }).catch(err => {
           console.log(err)
         })
       },
     })
   },
-  
+
   onLoad: function (options) {
     this.getmyPlace();
   },
@@ -49,8 +49,8 @@ Page({
       success: function (res) {
         console.log(res);
         that.setData({
-          value1:res.latitude,
-          value2:res.longitude,
+          value1: res.latitude,
+          value2: res.longitude,
         })
       },
       fail: function (err) {
@@ -58,34 +58,63 @@ Page({
       }
     })
   },
-  onSubmit: function(e){
+  onSubmit: function (e) {
     var that = this;
     console.log(e);
-    location.add({
-      data:{
-        latitude:that.data.value1,
-        longitude:that.data.value2,
-        name:e.detail.value.name,
-        image:that.data.image,
-        address:e.detail.value.address
+    let mylocation = {
+      data: {
+        latitude: that.data.value1,
+        longitude: that.data.value2,
+        name: e.detail.value.name,
+        image: that.data.image,
+        address: e.detail.value.address
       }
-    }).then(res=>{
-      that.data.id=res._id;
-      console.log(that.data.id)
-      wx.showToast({
-        title: '上传成功',
-        icon:'success',
-        duration:1000,
-        success:res2=>{
-          setTimeout(function(){
-            wx.switchTab({
-              url: `../home/home`,
-            })//提交后跳转
-          },1000)
-        },
-      })
+    }
+    let allPos = [];
+    const pos = wx.getStorageSync('mylocation');
+    if(pos){
+      allPos.push(...pos);
+    }
+    allPos.push(mylocation.data);
+    wx.setStorageSync('mylocation', allPos)
+    wx.showToast({
+      title: '上传成功',
+      icon: 'success',
+      duration: 1000,
+      success: res2 => {
+        setTimeout(function () {
+          wx.switchTab({
+            url: `../home/home`,
+          }) //提交后跳转
+        }, 1000)
+      },
     })
+    // location.add({
+    //   data:{
+    //     latitude:that.data.value1,
+    //     longitude:that.data.value2,
+    //     name:e.detail.value.name,
+    //     image:that.data.image,
+    //     address:e.detail.value.address
+    //   }
+    // }).then(res=>{
+    //   that.data.id=res._id;
+    //   console.log(that.data.id)
+    //   wx.showToast({
+    //     title: '上传成功',
+    //     icon:'success',
+    //     duration:1000,
+    //     success:res2=>{
+    //       setTimeout(function(){
+    //         wx.switchTab({
+    //           url: `../home/home`,
+    //         })//提交后跳转
+    //       },1000)
+    //     },
+    //   })
+    // })
   },
+
   enlarge: function (e) {
     wx.previewImage({
       urls: [this.data.image], //需要预览的图片http链接列表，注意是数组
@@ -95,7 +124,7 @@ Page({
       complete: function (res) {},
     })
   },
-  
+
   // deletefunction:function(){
   //   wx.cloud.callFunction({
   //     name:"deletemap"

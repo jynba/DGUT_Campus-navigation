@@ -56,17 +56,18 @@
 <view class="top-swich">
   <view bindtap="changeUpDown">
     <view class="top-swich-btn" wx:if="{{showUp}}">
-      展开
+    <text class="close_open">展开
+    </text>
     </view>
     <view class="top-swich-btn" wx:else="{{!showUp}}">
-      收起
+      <text class="close_open">收起</text> 
     </view>
   </view>
 </view>
 
 <view class="maptype">
   <image src='https://mmbiz.qpic.cn/mmbiz_png/ymce5HAJXsrB85rFDsDr7nvljb5AgbruzqVlNgyLO73uOpyLQ5oyUfsgElcpWWgZiaJgZFCV7YCFoecBHm9mKrw/0?wx_fmt=png' class='deleteMarker_pos' hidden='{{!isINdiy}}' bindtap="deleteMarker"></image>
-  <map id="myMap" style="width:100%;height:1500rpx" markers="{{markers}}" data-markers="{{markers}}" subkey="CFUBZ-WXKLW-3PKRK-O6JJY-KMAY5-EJB5L" layer-style="4" scale="17" show-compass="true" enable-rotate="true" enable-building="true" bindmarkertap="onPointTap" bindlabeltap="onPointTap" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"></map>
+  <map id="myMap" style="width:100%;height:1500rpx" markers="{{markers}}" data-markers="{{markers}}" subkey="CFUBZ-WXKLW-3PKRK-O6JJY-KMAY5-EJB5L" layer-style="4" scale="16" show-compass="true" enable-rotate="true" enable-building="true" bindmarkertap="onPointTap" bindlabeltap="onPointTap" latitude="{{markers[0].latitude}}" longitude="{{markers[0].longitude}}"></map>
 </view>
 
 <!--弹出框-->
