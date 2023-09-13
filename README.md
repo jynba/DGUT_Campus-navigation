@@ -8,7 +8,7 @@
 <br/><img src="./image/baf4f19d1cebe733de24786a3527d6f.png" width="700" height="400"/><br/>
 
 ## 在线访问二维码
-![gh_23f543467c24_258](./image/gh_fd34d48c276b_258.jpg)
+![gh_23f543467c24_258](https://raw.githubusercontent.com/jynba/DGUT_Campus-navigation/main/image/gh_fd34d48c276b_258.jpg)
 
 ## 项目演示
 * 分类查看校内建筑物
