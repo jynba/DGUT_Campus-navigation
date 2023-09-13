@@ -5,18 +5,18 @@
 ## 项目成果
 **目前用户量为 995 人（2023/9/13）(无宣传的情况下有这么多已经很不错了 QAQ)**
 
-<img src="./image/baf4f19d1cebe733de24786a3527d6f.png" width="600" height="400"/><br/>
+<br/><img src="./image/baf4f19d1cebe733de24786a3527d6f.png" width="600" height="500"/><br/>
 
 ![gh_23f543467c24_258](./image/gh_fd34d48c276b_258.jpg)
 
 ## 项目演示
 * 分类查看校内建筑物
-<img src="./image/60aa525ba04d5331a101c17b9ca9026.jpg" width="400" height="800"/><br/>
+<br/><img src="./image/60aa525ba04d5331a101c17b9ca9026.jpg" width="400" height="800"/><br/>
 * 搜索功能：
-<img src="./image/f65839e1bc58206ebf0f9f0fc3868dd.jpg" width="400" height="800"/><br/>
+<br/><img src="./image/f65839e1bc58206ebf0f9f0fc3868dd.jpg" width="400" height="800"/><br/>
 * 自定义坐标点
-<img src="./image/06d6dfbb48f847eae61a4d7c19dbfba.jpg" width="400" height="800"/>
-<img src="./image/8f78ac17d4e64752166445cab593254.jpg" width="400" height="800"/>
+<br/><img src="./image/06d6dfbb48f847eae61a4d7c19dbfba.jpg" width="400" height="800"/><br/>
+<br/><img src="./image/8f78ac17d4e64752166445cab593254.jpg" width="400" height="800"/>
 ## **一、项目研究的目的与意义**
 
 **目的**：适用于对莞工还不甚了解的人群，尤其是大一新生，以及想要了解莞工的用户，小程序详细地介绍莞工松山湖校区，个性化地定制莞工地图，使得新生不再对陌生的路感到迷茫。
