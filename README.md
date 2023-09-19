@@ -3,7 +3,7 @@
 详情见 https://jyblog.stm32-mqtt.top/projects/ggdt_project/
 调用腾讯地图接口和插件
 ## 项目成果
-**目前用户量为 995 人（2023/9/13）(无宣传的情况下有这么多已经很不错了 QAQ)**
+**目前用户量为 1000+ 人（2023/9/19）(无宣传的情况下有这么多已经很不错了 QAQ)**
 
 <br/><img src="./image/baf4f19d1cebe733de24786a3527d6f.png" width="700" height="400"/><br/>
 
