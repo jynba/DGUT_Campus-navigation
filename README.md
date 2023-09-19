@@ -5,10 +5,10 @@
 ## 项目成果
 **目前用户量为 1000+ 人（2023/9/19）(无宣传的情况下有这么多已经很不错了 QAQ)**
 
-<br/><img src="./image/baf4f19d1cebe733de24786a3527d6f.png" width="700" height="400"/><br/>
+<br/>![image](https://github.com/jynba/DGUT_Campus-navigation/assets/75623303/6a176ced-54b8-435c-90e1-495d9a6854b7)<br/>
 
 ## 在线访问二维码
-![image](https://github.com/jynba/DGUT_Campus-navigation/assets/75623303/6a176ced-54b8-435c-90e1-495d9a6854b7)
+
 
 ## 项目演示
 * 分类查看校内建筑物
