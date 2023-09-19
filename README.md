@@ -8,7 +8,7 @@
 <br/>![image](https://github.com/jynba/DGUT_Campus-navigation/assets/75623303/6a176ced-54b8-435c-90e1-495d9a6854b7)<br/>
 
 ## 在线访问二维码
-
+![image](https://raw.githubusercontent.com/jynba/DGUT_Campus-navigation/main/image/gh_fd34d48c276b_258.jpg)
 
 ## 项目演示
 * 分类查看校内建筑物
